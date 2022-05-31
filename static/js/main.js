@@ -12,5 +12,3 @@ for (let i = 0; i < nav.children.length; i++) {
     div.appendChild(newNode); // adds the title to the div
     document.body.appendChild(div); // inserts the div in the body
 }
-
-// a comment
