@@ -13,4 +13,4 @@ for (let i = 0; i < nav.children.length; i++) {
     document.body.appendChild(div); // inserts the div in the body
 }
 
-
+// a comment
