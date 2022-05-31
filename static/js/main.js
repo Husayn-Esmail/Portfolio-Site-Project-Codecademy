@@ -1,8 +1,6 @@
-let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
+// debated creating the secondary nav with js as well. 
+// let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
-// document.body.createElement('nav');
-// let navs = document.body.getElementsByTagName('nav');
-// navs[0].appendChild('ul');
 
 const nav = document.getElementById('secondary').firstElementChild;
 for (let i = 0; i < nav.children.length; i++) {
@@ -16,6 +14,3 @@ for (let i = 0; i < nav.children.length; i++) {
 }
 
 
-// let navi = document.getElementById('secondary');
-// console.log(navi.innerHTML);
-// console.log(navi);
