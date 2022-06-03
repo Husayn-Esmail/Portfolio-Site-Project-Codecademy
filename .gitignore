@@ -3,3 +3,4 @@ CleanCodePythonWebScrapeAPI/
 portfolio_venv/
 portfolio_env/
 .DS_STORE
+static/.DS_STORE
