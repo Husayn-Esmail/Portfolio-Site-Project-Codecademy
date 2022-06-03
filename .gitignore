@@ -4,3 +4,14 @@ portfolio_venv/
 portfolio_env/
 .DS_STORE
 static/.DS_STORE
+*.pyc
+instance/
+
+.pytest_cache/
+__pycache__/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
