@@ -1,0 +1,6 @@
+git checkout main
+git pull
+git checkout [branch]
+git merge main
+
+resolve merge conflicts, can be very annoying and very dangerous be careful
