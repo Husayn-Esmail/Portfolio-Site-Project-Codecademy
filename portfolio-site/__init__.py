@@ -25,4 +25,11 @@ def create_app(test_config=None):
     def index():
         return render_template('index.html')
 
+    @app.route('/contact', methods=['GET', 'POST'])
+    def contact():
+        return render_template('contact.html')
+
+    @app.route('/test', methods=['GET'])
+    def test():
+        return render_template('test.html')
     return app
