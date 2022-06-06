@@ -19,7 +19,8 @@
 <section id="projects">
     <!-- load in projects -->
     <script type="text/javascript">
-        var myVar = '{{ data|tojson }}';
+        var myVar = '{{ data.more_stuff[0]|tojson }}';
+        var myOtherVar = '{{ data|tojson }}';
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <!-- <script type="text/javascript">

@@ -3,6 +3,9 @@ import unittest
 
 img_path = './static/img/python/populated_form.png'
 class DoubleLinkedListNode:
+    """
+    to be used in when recursively searching directories
+    """
     def __init__(self, prev, data, next):
         self._prev = prev
         self._data = data
@@ -101,7 +104,6 @@ def read_files():
     ...
     so at most it should be only going 2 directories deep. 
     """        
-
 
 if __name__ == '__main__':
     unittest.main()

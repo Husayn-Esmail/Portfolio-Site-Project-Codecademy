@@ -23,7 +23,7 @@ def create_app(test_config=None):
 
     @app.route('/', methods=['GET'])
     def index():
-        data = {'stuff': 'stuff in stuff', 'more_stuff': 'more_stuff in stuff'}
+        data = {'stuff': 'stuff in stuff', 'more_stuff': ['more_stuff in stuff',2,3,4,5]}
         return render_template('index.html', data=data)
 
     @app.route('/contact', methods=['GET', 'POST'])
