@@ -15,7 +15,7 @@
 <p>this is a website</p>
 <section id="projects">
     <!-- load in projects -->
-    <script src="../static/js/carousel.js"></script>
+    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <!-- all other sections must start after this -->
 </section>
 {% endblock %}
