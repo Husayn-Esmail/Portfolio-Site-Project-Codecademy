@@ -50,35 +50,60 @@ class DoubleLinkedList:
         self._size += 1
         return self._tail
 
+class TestDLLNode(unittest.TestCase):
+    def test_node_creation(self):
+        pass
 
-        
+    def test_node_get_next(self):
+        pass
 
-# lists all the subfolders in img folder.
-files = []
-try:
-    main_folders = os.listdir(img_path)
-except NotADirectoryError:
-    files = os.listdir('')
-print(main_folders)
-"""
-We want to do the following:
-go through each folder recursively,
-while entering each folder, store the name of said folder,
-structure should be as such anyways
-img
---c
-   -final grade calculator
-     - image 1
-     - image 2
-     - image 3
-   - another c project
-    -image 1
-    -image 2
--- python
-  - html api
-    -image 1
-    -image 2
-...
-so at most it should be only going 2 directories deep. 
-"""
+    def test_node_set_next(self):
+        pass
+
+    def test_node_get_prev(self):
+        pass
+
+    def test_node_set_prev(self):
+        pass
+    
+    def test_node_get_data(self):
+        pass
+
+    def test_node_set_data(self):
+        pass
+
+def read_files():
+    # lists all the subfolders in img folder.
+    files = []
+    try:
+        main_folders = os.listdir(img_path)
+    except NotADirectoryError:
+        files = os.listdir('')
+    print(main_folders)
+    """
+    We want to do the following:
+    go through each folder recursively,
+    while entering each folder, store the name of said folder,
+    structure should be as such anyways
+    img
+    --c
+    -final grade calculator
+        - image 1
+        - image 2
+        - image 3
+    - another c project
+        -image 1
+        -image 2
+    -- python
+    - html api
+        -image 1
+        -image 2
+    ...
+    so at most it should be only going 2 directories deep. 
+    """        
+
+
+if __name__ == '__main__':
+    unittest.main()
+    
 
