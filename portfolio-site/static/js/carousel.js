@@ -1,6 +1,18 @@
 // debated creating the secondary nav with js as well. 
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
+
+
+
+
+// function myFunc(vars) {
+//     console.log(vars);
+//     let x = document.createElement('p');
+//     x.innerHTML = vars;
+//     document.body.appendChild(x);
+//     return vars;
+// }
+
 class ProjectShowcase {
     constructor(name, prog_language) {
         this._name = name;
@@ -50,11 +62,10 @@ class ProjectShowcase {
             let newImage = document.createElement('img');
             newImage.src = this._images[i];
             div.appendChild(newImage);
+            document.body.appendChild(div);
         }
     }
 }
-
-
 
 const nav = document.getElementById('secondary').firstElementChild;
 for (let i = 0; i < nav.children.length; i++) {
@@ -67,3 +78,8 @@ for (let i = 0; i < nav.children.length; i++) {
     document.body.appendChild(div); // inserts the div in the body
 }
 
+console.log(myVar);
+let x = document.createElement('p');
+x.innerHTML = myVar;
+
+document.body.appendChild(x);

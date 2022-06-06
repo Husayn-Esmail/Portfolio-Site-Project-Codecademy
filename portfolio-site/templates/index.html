@@ -1,6 +1,9 @@
 <!-- extends the base template -->
 {% extends "template.html" %}
 {% block title %}Portfolio{% endblock %}
+{% block head %}
+<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicons/favicon-16x16.png') }}">
+{% endblock %}
 {% block content %}
 <section>
     <nav id="secondary">
@@ -15,7 +18,13 @@
 <p>this is a website</p>
 <section id="projects">
     <!-- load in projects -->
-    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    <script type="text/javascript">
+        var myVar = '{{ data|tojson }}';
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    <!-- <script type="text/javascript">
+        myFunc({{ data|tojson }});
+    </script> -->
     <!-- all other sections must start after this -->
 </section>
 {% endblock %}
