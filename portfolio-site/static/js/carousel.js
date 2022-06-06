@@ -83,3 +83,7 @@ let x = document.createElement('p');
 x.innerHTML = myVar;
 
 document.body.appendChild(x);
+
+let y = document.createElement('p');
+y.innerHTML = myOtherVar;
+document.body.appendChild(y);
