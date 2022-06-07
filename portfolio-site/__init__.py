@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import os
+from .services import read_images
 
 def create_app(test_config=None):
     # create and configure the app
@@ -23,7 +24,8 @@ def create_app(test_config=None):
 
     @app.route('/', methods=['GET'])
     def index():
-        data = {'stuff': 'stuff in stuff', 'more_stuff': ['more_stuff in stuff',2,3,4,5]}
+        path = "portfolio-site/static/img"
+        data = read_images(path)
         return render_template('index.html', data=data)
 
     @app.route('/contact', methods=['GET', 'POST'])

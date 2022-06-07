@@ -86,13 +86,6 @@ to go forwards or backwards. upon knowing that the head or tail is
 null, the backward/forward buttons (respectively) should disappear.
 */
 
-
-console.log(myVar);
-let x = document.createElement('p');
-x.innerHTML = myVar;
-
-document.body.appendChild(x);
-
 let y = document.createElement('p');
 y.innerHTML = myOtherVar;
 document.body.appendChild(y);
