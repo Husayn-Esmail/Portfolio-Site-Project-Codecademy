@@ -101,47 +101,66 @@ class TestDLLNode(unittest.TestCase):
         actual = node1.get_data()
         self.assertEqual(actual, expected, "set_data changes the value of data")
 
-def read_files():
-    # lists all the subfolders in img folder.
-    files = []
-    img_path = './static/img'
+# def read_files():
+#     # lists all the subfolders in img folder.
+#     files = []
+#     img_path = './static/img'
 
-    try:
-        main_folders = os.listdir(img_path)
-        # cascading path additions
-        paths = DoubleLinkedList(None, None)
-        new_paths = []
-        for folder in main_folders:
-            new_paths.append(img_path+'/%s' % folder)
-        print(new_paths)
-    except NotADirectoryError:
-        # if not a directory use the previous path
-        files = os.listdir('')
-    print(main_folders)
+#     try:
+#         main_folders = os.listdir(img_path)
+#         # cascading path additions
+#         paths = DoubleLinkedList(None, None)
+#         new_paths = []
+#         for folder in main_folders:
+#             new_paths.append(img_path+'/%s' % folder)
+#         print(new_paths)
+#     except NotADirectoryError:
+#         # if not a directory use the previous path
+#         files = os.listdir('')
+#     print(main_folders)
+#     """
+#     We want to do the following:
+#     go through each folder recursively,
+#     while entering each folder, store the name of said folder,
+#     structure should be as such anyways
+#     img
+#     --c
+#     -final grade calculator
+#         - image 1
+#         - image 2
+#         - image 3
+#     - another c project
+#         -image 1
+#         -image 2
+#     -- python
+#     - html api
+#         -image 1
+#         -image 2
+#     ...
+#     so at most it should be only going 2 directories deep. 
+#     """        
+
+def read_images(path: str):
     """
-    We want to do the following:
-    go through each folder recursively,
-    while entering each folder, store the name of said folder,
-    structure should be as such anyways
-    img
-    --c
-    -final grade calculator
-        - image 1
-        - image 2
-        - image 3
-    - another c project
-        -image 1
-        -image 2
-    -- python
-    - html api
-        -image 1
-        -image 2
-    ...
-    so at most it should be only going 2 directories deep. 
-    """        
+    Gets all the folders in a given path and traverses one level down to obtain
+    all the filenames within the folders of that path. Stores the contents of
+    each folder next to the folder name in a dictionary.
+    returns the dictionary
+    """
+    outer_directories = os.listdir(path)
+    images = {}
+    for directory in outer_directories:
+        if directory == 'favicons':
+            continue
+        temp_path = path + '/' + directory
+        images[directory] = os.listdir(temp_path)
+    return images
+
+
 
 if __name__ == '__main__':
-    read_files()
+    path = "./static/img"
+    print(read_images(path))
     unittest.main()
     
 
