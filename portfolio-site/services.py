@@ -1,7 +1,7 @@
 import os
 import unittest
 
-img_path = './static/img/python/populated_form.png'
+
 class DoubleLinkedListNode:
     """
     to be used in when recursively searching directories
@@ -31,6 +31,10 @@ class DoubleLinkedListNode:
     
 
 class DoubleLinkedList:
+    '''
+    used to define the overall structure of the double
+    linked list
+    '''
     def __init__(self, head, tail):
         self._head = head
         self._tail = tail
@@ -78,9 +82,16 @@ class TestDLLNode(unittest.TestCase):
 def read_files():
     # lists all the subfolders in img folder.
     files = []
+    img_path = './static/img/python'
     try:
         main_folders = os.listdir(img_path)
+        # cascading path additions
+        new_paths = []
+        for folder in main_folders:
+            new_paths.append(img_path+'/%s' % folder)
+        print(new_paths)
     except NotADirectoryError:
+        # if not a directory use the previous path
         files = os.listdir('')
     print(main_folders)
     """
@@ -106,6 +117,7 @@ def read_files():
     """        
 
 if __name__ == '__main__':
+    read_files()
     unittest.main()
     
 
