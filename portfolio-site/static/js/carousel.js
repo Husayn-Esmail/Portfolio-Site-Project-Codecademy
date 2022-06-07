@@ -14,16 +14,16 @@
 // }
 
 class ProjectShowcase {
-    constructor(name, prog_language) {
-        this._name = name;
+    constructor(prog_language) {
+        // this._name = name;
         this._prog_language = prog_language;
         this._images = [];
         this._description = "";
     }
 
-    get name() {
-        return this._name;
-    }
+    // get name() {
+    //     return this._name;
+    // }
 
     get prog_language() {
         return this._prog_language;
@@ -70,11 +70,16 @@ class ProjectShowcase {
 const nav = document.getElementById('secondary').firstElementChild;
 for (let i = 0; i < nav.children.length; i++) {
     // the elements within seocondary navigation
-    console.log(nav.children[i].innerHTML);
+    const language = nav.children[i].innerHTML;
+    console.log(language);
     let div = document.createElement('div'); // creates a div to contain each image carousel
     let newNode = document.createElement('h2'); // creates the title element for the section 
-    newNode.innerHTML = nav.children[i].innerHTML; // populates the title element 
+    newNode.innerHTML = language; // populates the title element 
     div.appendChild(newNode); // adds the title to the div
+    newShowcase = new ProjectShowcase(language)
+
+
+
     document.body.appendChild(div); // inserts the div in the body
 }
 

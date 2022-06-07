@@ -140,6 +140,33 @@ class TestDLLNode(unittest.TestCase):
 #     so at most it should be only going 2 directories deep. 
 #     """        
 
+"""
+if at any point I need three fields such as the ability to read the project
+folder i.e. img/C/project_name/images then I need to create an object that
+is of this structure
+
+class Project:
+    '''
+    Used to store the assets of a project
+    is to be used in conjunction with Language Projects.
+    '''
+    def __init__(self, name, images):
+        self._name = name
+        self._images = images
+        self._description = ""
+
+class LanguageProjects:
+    '''
+    Holds the name of the programming language
+    and stores objects that hold all information
+    necessary for a project.
+    '''
+    def __init__(self, prog_language):
+        self._prog_language = prog_language
+        self._projects = [projectObjects] 
+"""
+
+
 def read_images(path: str):
     """
     Gets all the folders in a given path and traverses one level down to obtain
