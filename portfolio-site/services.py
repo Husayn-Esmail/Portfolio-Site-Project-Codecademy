@@ -59,33 +59,57 @@ class DoubleLinkedList:
 
 class TestDLLNode(unittest.TestCase):
     def test_node_creation(self):
-        pass
+        node1 = DoubleLinkedListNode(None, 3, None)
+        self.assertIs(type(node1), DoubleLinkedListNode, "node is a node")
 
     def test_node_get_next(self):
-        pass
+        node1 = DoubleLinkedListNode(None, 2, None)
+        node2 = DoubleLinkedListNode(None, 3, node1)
+        self.assertEqual(node2.get_next(), node1, "get_next actually gets next")
 
     def test_node_set_next(self):
-        pass
+        node1 = DoubleLinkedListNode(None, 2, None)
+        node2 = DoubleLinkedListNode(node1, 3, None)
+        node1.set_next(node2)
+        self.assertEqual(node1.get_next(), node2, "check that set_next sets next")
 
     def test_node_get_prev(self):
-        pass
+        node1 = DoubleLinkedListNode(None, 2, None)
+        node2 = DoubleLinkedListNode(node1, 2, None)
+        expected = node1
+        actual = node2.get_prev()
+        self.assertEqual(actual, expected, "get_prev returns previous node")
 
     def test_node_set_prev(self):
-        pass
+        node1 = DoubleLinkedListNode(None, 2, None)
+        node2 = DoubleLinkedListNode(None, 2, None)
+        expected = node1
+        node2.set_prev(node1)
+        actual = node2.get_prev()
+        self.assertEqual(actual, expected, "set_prev sets node's previous")
     
     def test_node_get_data(self):
-        pass
+        node1 = DoubleLinkedListNode(None, 3, None)
+        expected = 3
+        actual = node1.get_data()
+        self.assertEqual(actual, expected, "get_data returns value in data")
 
     def test_node_set_data(self):
-        pass
+        node1 = DoubleLinkedListNode(None, None, None)
+        node1.set_data(5)
+        expected = 5
+        actual = node1.get_data()
+        self.assertEqual(actual, expected, "set_data changes the value of data")
 
 def read_files():
     # lists all the subfolders in img folder.
     files = []
-    img_path = './static/img/python'
+    img_path = './static/img'
+
     try:
         main_folders = os.listdir(img_path)
         # cascading path additions
+        paths = DoubleLinkedList(None, None)
         new_paths = []
         for folder in main_folders:
             new_paths.append(img_path+'/%s' % folder)
