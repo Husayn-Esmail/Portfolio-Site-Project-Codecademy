@@ -78,6 +78,15 @@ for (let i = 0; i < nav.children.length; i++) {
     document.body.appendChild(div); // inserts the div in the body
 }
 
+/*
+On navigation, depending on what button was clicked, the structure
+of images within the ProjectShowcase objects should also be a
+double linked list so that they know whether there is the ability
+to go forwards or backwards. upon knowing that the head or tail is
+null, the backward/forward buttons (respectively) should disappear.
+*/
+
+
 console.log(myVar);
 let x = document.createElement('p');
 x.innerHTML = myVar;
