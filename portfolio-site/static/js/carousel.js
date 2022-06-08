@@ -49,11 +49,10 @@ class ProjectShowcase {
         this._images.push(image);
     }
 
-    displayHeading() {
-        let div = document.createElement('div');
-        let newNode = document.createElement('h2');
-        newNode.innerHTML = this._name;
-        div.appendChild(newNode)
+    displayHeading(div) {
+        let newHeading = document.createElement('h2');
+        newHeading.innerHTML = this._prog_language;
+        div.appendChild(newHeading)
     }
 
     displayImages() {
@@ -72,9 +71,6 @@ for (let i = 0; i < nav.children.length; i++) {
     // the elements within secondary navigation
     const language = nav.children[i].innerText;
     let div = document.createElement('div'); // creates a div to contain each image carousel
-    let newNode = document.createElement('h2'); // creates the title element for the section 
-    newNode.innerHTML = language; // populates the title element 
-    div.appendChild(newNode); // adds the title to the div
     showcase = new ProjectShowcase(language);
     for (key in images) {
         if (key.toLowerCase === language.toLowerCase) {
@@ -82,6 +78,7 @@ for (let i = 0; i < nav.children.length; i++) {
             break
         }
     }
+    showcase.displayHeading(div)
     console.log(showcase);
 
 
