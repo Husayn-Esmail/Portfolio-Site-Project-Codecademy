@@ -51,18 +51,43 @@ class ProjectShowcase {
 
     displayHeading(div) {
         let newHeading = document.createElement('h2');
-        newHeading.innerHTML = this._prog_language;
+        newHeading.innerHTML = this.prog_language;
         div.appendChild(newHeading)
     }
 
-    displayImages() {
-        let div = document.createElement('div');
+    displayImages(div) {
+        let subdiv = document.createElement('div');
         for (let i = 0; i < this._images.length; i++) {
             let newImage = document.createElement('img');
             newImage.src = this._images[i];
-            div.appendChild(newImage);
-            document.body.appendChild(div);
+            subdiv.appendChild(newImage);
+            div.appendChild(subdiv); // add subdiv to parent div
         }
+    }
+
+    #populateNavButton(button, content, div) {
+        button.innerHTML = content;
+        button.className = "nav-button";
+        // let img = document.createElement('img');
+        let i = Math.floor(Math.random() * this.images.length);
+        // img.src = images[i];
+        console.log(i);
+        button.addEventListener('click', (event) => {
+            if (i === this.images.length){
+                i = 0;
+            }
+            console.log(this.images[i++]);
+            // img.src = images[i++];
+        });
+        // div.appendChild(img);
+    }
+    createNavButtons(div) {
+        let left = document.createElement('p');
+        let right = document.createElement('p');
+        this.#populateNavButton(left, '<', div);
+        this.#populateNavButton(right, '>', div);
+        div.appendChild(left);
+        div.appendChild(right);
     }
 }
 
@@ -72,15 +97,16 @@ for (let i = 0; i < nav.children.length; i++) {
     const language = nav.children[i].innerText;
     let div = document.createElement('div'); // creates a div to contain each image carousel
     showcase = new ProjectShowcase(language);
+    // FIXME: Need to pass image path so we can render images
     for (key in images) {
         if (key.toLowerCase === language.toLowerCase) {
             showcase.images = images[key];
             break
         }
     }
-    showcase.displayHeading(div)
+    showcase.displayHeading(div);
     console.log(showcase);
-
+    showcase.createNavButtons(div);
 
     document.body.appendChild(div); // inserts the div in the body
 }

@@ -9,3 +9,12 @@
 body {
     background-color: green;
 }
+
+.nav-button {
+    font-size: 5rem;
+    color: yellow;
+}
+
+.nav-button:hover {
+    cursor: pointer;
+}
