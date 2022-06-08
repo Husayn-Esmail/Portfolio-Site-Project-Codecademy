@@ -9,7 +9,7 @@ def read_images(path: str, prev_path: str = None):
     #     for dir in parent_dirs:
     #         paths.append({dir: []})
     #     first_run = False
-    
+    # FIXME: Still need to tailor output to somethign desirable
     if os.path.isdir(path):
         listed = os.listdir(path)
         for item in listed:
