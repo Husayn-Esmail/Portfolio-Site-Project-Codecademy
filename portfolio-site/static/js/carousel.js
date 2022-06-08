@@ -66,6 +66,7 @@ class ProjectShowcase {
     }
 
     #populateNavButton(button, content, div) {
+        // FIXME: returns the same list of images every time.
         button.innerHTML = content;
         button.className = "nav-button";
         // let img = document.createElement('img');
@@ -98,6 +99,7 @@ for (let i = 0; i < nav.children.length; i++) {
     let div = document.createElement('div'); // creates a div to contain each image carousel
     showcase = new ProjectShowcase(language);
     // FIXME: Need to pass image path so we can render images
+    // FIXME: returns the same list of images every time.
     for (key in images) {
         if (key.toLowerCase === language.toLowerCase) {
             showcase.images = images[key];
