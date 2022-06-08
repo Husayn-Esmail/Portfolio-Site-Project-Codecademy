@@ -69,15 +69,20 @@ class ProjectShowcase {
 
 const nav = document.getElementById('secondary').firstElementChild;
 for (let i = 0; i < nav.children.length; i++) {
-    // the elements within seocondary navigation
-    const language = nav.children[i].innerHTML;
-    console.log(language);
+    // the elements within secondary navigation
+    const language = nav.children[i].innerText;
     let div = document.createElement('div'); // creates a div to contain each image carousel
     let newNode = document.createElement('h2'); // creates the title element for the section 
     newNode.innerHTML = language; // populates the title element 
     div.appendChild(newNode); // adds the title to the div
-    newShowcase = new ProjectShowcase(language)
-
+    showcase = new ProjectShowcase(language);
+    for (key in images) {
+        if (key.toLowerCase === language.toLowerCase) {
+            showcase.images = images[key];
+            break
+        }
+    }
+    console.log(showcase);
 
 
     document.body.appendChild(div); // inserts the div in the body
@@ -92,5 +97,5 @@ null, the backward/forward buttons (respectively) should disappear.
 */
 
 let y = document.createElement('p');
-y.innerHTML = myOtherVar;
+y.innerHTML = images;
 document.body.appendChild(y);
