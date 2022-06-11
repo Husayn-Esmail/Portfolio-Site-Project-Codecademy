@@ -26,6 +26,7 @@ def create_app(test_config=None):
     def index():
         path = "portfolio-site/static/img"
         data = read_images(path)
+        print(data)
         return render_template('index.html', data=data)
 
     @app.route('/contact', methods=['GET', 'POST'])
@@ -35,4 +36,5 @@ def create_app(test_config=None):
     @app.route('/test', methods=['GET'])
     def test():
         return render_template('test.html')
+
     return app
