@@ -51,8 +51,6 @@ class LanguageProjects:
         self.__prog_language = prog_language
     
 
-    
-
 def read_images(projects, path: str, project: LanguageProjects = None,
                 prev_path: str = None, prev_item: str = None):
     # if first_run and os.path.isdir(path):
@@ -61,19 +59,25 @@ def read_images(projects, path: str, project: LanguageProjects = None,
     #         paths.append({dir: []})
     #     first_run = False
     # FIXME: Still need to tailor output to something desirable
-    if os.path.isdir(path):
+    is_dir = os.path.isdir(path)
+    if is_dir:
         listed = os.listdir(path)
         for item in listed:
-            new_lang = LanguageProjects(item)
+            project = LanguageProjects(item)
             new_path = path + '/' + item
             # paths.append({new_path:[]})
-            read_images(new_path, new_lang, path)
-            if new_lang.get_projects() != []:
-                projects.append(new_lang)
+            print("item: ", item)
+            read_images(projects, new_path, project, path, item)
+            if project.get_projects() != []:
+                projects.append(project)
     else:
-        for item in paths:
-            if prev_path in item:
-                item[prev_path].append(path)
+        # builds project object
+        items = os.listdir(prev_path)
+        new_project = Project(prev_item, items)
+        print(prev_item)
+        # print(new_project.__dict__)
+        for item in projects:
+            print(item.__dict__)
 
 if __name__ == "__main__":
     projects = []
