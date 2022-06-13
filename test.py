@@ -81,7 +81,7 @@ def read_images(projects, path: str, project: LanguageProjects = None,
         for item in listed:
             new_lang = LanguageProjects(item)
             new_path = path + '/' + item
-            if prev_item == None:
+            if prev_item is None:
                 new_item = sll(item)
                 read_images(projects, new_path, new_lang, path, new_item)
             else:
