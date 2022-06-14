@@ -4,7 +4,6 @@ import os
 from memory_profiler import profile
 
 
-
 class Project:
     def __init__(self, name, images):
         self.__name = name
@@ -31,6 +30,13 @@ class Project:
     
     def get_name(self):
         return self.__name
+    
+    def __str__(self):
+        return """
+        name: %s
+        images: %s
+        description: %s
+        """ % (self.get_name(), str(self.get_images()), self.get_description())
 
 class LanguageProjects:
     def __init__(self, prog_language):
@@ -51,6 +57,12 @@ class LanguageProjects:
 
     def set_prog_language(self, prog_language):
         self.__prog_language = prog_language
+    
+    def __str__(self):
+        return """
+        prog_language = %s
+        projects = %s
+        """ % (self.get_prog_language(), str(self.get_projects()))
     
 class sllnode:
     def __init__(self, data):
@@ -73,11 +85,6 @@ class sllnode:
 # @profile
 def read_images(projects: list, path: str, project: LanguageProjects = None,
                 prev_path: str = None, prev_item: sllnode = None):
-    # if first_run and os.path.isdir(path):
-    #     parent_dirs = os.listdir(path)
-    #     for dir in parent_dirs:
-    #         paths.append({dir: []})
-    #     first_run = False
     # FIXME: Still need to tailor output to something desirable
     is_dir = os.path.isdir(path)
     if is_dir:
@@ -88,27 +95,25 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
             if prev_item is None:
                 new_item = sllnode(item)
                 read_images(projects, new_path, new_lang, path, new_item)
+                projects.append(new_lang)
             else:
-            # paths.append({new_path:[]})
                 new_item = sllnode(item)
                 new_item.set_prev(prev_item)
-                # print(new_item.get_prev().get_data())
                 read_images(projects, new_path, new_lang, path, new_item)
-            if new_lang.get_projects() != []:
-                projects.append(new_lang)
+
     else:
         items = os.listdir(prev_path)
         # print(prev_item.get_prev().get_data())
         # while loop iterating back to prev = none to figure out parent directory
         temp = prev_item
-        while temp != None:
-            temp = prev_item.get_prev() # doesn't ever return None
-        image_dir = prev_item.get_prev().get_data()
+        while temp.get_prev() != None:
+            temp = temp.get_prev()
+        image_dir = temp.get_data()
         new_project = Project(image_dir, items)
         for item in projects:
             if item.get_prog_language() == temp:
                 item.add_project(new_project)
-        print(new_project.__dict__)
+        # print(new_project.__dict__)
         # print(prev_item.get_data())
         # for item in projects:
         #     print(item.__dict__)
@@ -116,9 +121,8 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
 
 if __name__ == "__main__":
     path = 'portfolio-site/static/img'
-    paths = []
     projects = []
     read_images(projects, path)
+    for item in projects:
+        print(item)
     # print(timeit(stmt = statement, number = 5000))
-    # for path in paths:
-    #     print(path)
