@@ -1,4 +1,7 @@
+from timeit import timeit
+# statement = """"""
 import os
+from memory_profiler import profile
 
 path = 'portfolio-site/static/img'
 paths = []
@@ -66,8 +69,9 @@ class sll:
     
     def set_prev(self, node):
         self.__prev = node
-    
 
+
+@profile
 def read_images(projects, path: str, project: LanguageProjects = None,
                 prev_path: str = None, prev_item: sll = None):
     # if first_run and os.path.isdir(path):
@@ -107,6 +111,6 @@ if __name__ == "__main__":
     projects = []
     read_images(projects, path)
 
-
-for path in paths:
-    print(path)
+# print(timeit(stmt = statement, number = 5000))
+# for path in paths:
+#     print(path)
