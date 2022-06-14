@@ -29,7 +29,7 @@ class TestProject:
         assert new_image in self.project.get_images()
 
     def test_get_description(self):
-        assert self.project.get_description == ""
+        assert self.project.get_description() == ""
     
     def test_set_description(self):
         desc = "test"
