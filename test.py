@@ -65,7 +65,7 @@ class sll:
         self.__data = new_data
     
     def set_prev(self, node):
-        self.__prv = node
+        self.__prev = node
     
 
 def read_images(projects, path: str, project: LanguageProjects = None,
@@ -88,13 +88,20 @@ def read_images(projects, path: str, project: LanguageProjects = None,
             # paths.append({new_path:[]})
                 new_item = sll(item)
                 new_item.set_prev(prev_item)
+                # print(new_item.get_prev().get_data())
                 read_images(projects, new_path, new_lang, path, new_item)
             if new_lang.get_projects() != []:
                 projects.append(new_lang)
     else:
-        for item in paths:
-            if prev_path in item:
-                item[prev_path].append(path)
+        items = os.listdir(prev_path)
+        # print(prev_item.get_prev().get_data())
+        # while loop iterating back to prev = none to figure out parent directory
+        new_project = Project(prev_item.get_prev().get_data(), items)
+        print(new_project.__dict__)
+        # print(prev_item.get_data())
+        # for item in projects:
+        #     print(item.__dict__)
+
 
 if __name__ == "__main__":
     projects = []
