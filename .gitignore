@@ -7,7 +7,7 @@ portfolio-env
 static/.DS_STORE
 *.pyc
 instance/
-
+*.dat
 .pytest_cache/
 __pycache__/
 .coverage
