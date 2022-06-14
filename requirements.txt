@@ -1,2 +1,4 @@
 flask
 memory-profiler
+matplotlib
+pyqt5
