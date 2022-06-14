@@ -50,34 +50,51 @@ class LanguageProjects:
     def set_prog_language(self, prog_language):
         self.__prog_language = prog_language
     
+class sll:
+    def __init__(self, data):
+        self.__data = data
+        self.__prev = None
+    
+    def get_data(self):
+        return self.__data
+    
+    def get_prev(self):
+        return self.__prev
+    
+    def set_data(self, new_data):
+        self.__data = new_data
+    
+    def set_prev(self, node):
+        self.__prv = node
+    
 
 def read_images(projects, path: str, project: LanguageProjects = None,
-                prev_path: str = None, prev_item: str = None):
+                prev_path: str = None, prev_item: sll = None):
     # if first_run and os.path.isdir(path):
     #     parent_dirs = os.listdir(path)
     #     for dir in parent_dirs:
     #         paths.append({dir: []})
     #     first_run = False
     # FIXME: Still need to tailor output to something desirable
-    is_dir = os.path.isdir(path)
-    if is_dir:
+    if os.path.isdir(path):
         listed = os.listdir(path)
         for item in listed:
-            project = LanguageProjects(item)
+            new_lang = LanguageProjects(item)
             new_path = path + '/' + item
+            if prev_item is None:
+                new_item = sll(item)
+                read_images(projects, new_path, new_lang, path, new_item)
+            else:
             # paths.append({new_path:[]})
-            print("item: ", item)
-            read_images(projects, new_path, project, path, item)
-            if project.get_projects() != []:
-                projects.append(project)
+                new_item = sll(item)
+                new_item.set_prev(prev_item)
+                read_images(projects, new_path, new_lang, path, new_item)
+            if new_lang.get_projects() != []:
+                projects.append(new_lang)
     else:
-        # builds project object
-        items = os.listdir(prev_path)
-        new_project = Project(prev_item, items)
-        print(prev_item)
-        # print(new_project.__dict__)
-        for item in projects:
-            print(item.__dict__)
+        for item in paths:
+            if prev_path in item:
+                item[prev_path].append(path)
 
 if __name__ == "__main__":
     projects = []
