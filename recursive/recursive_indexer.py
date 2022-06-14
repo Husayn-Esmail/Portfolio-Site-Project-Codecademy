@@ -52,7 +52,7 @@ class LanguageProjects:
     def set_prog_language(self, prog_language):
         self.__prog_language = prog_language
     
-class sll:
+class sllnode:
     def __init__(self, data):
         self.__data = data
         self.__prev = None
@@ -72,7 +72,7 @@ class sll:
 
 # @profile
 def read_images(projects: list, path: str, project: LanguageProjects = None,
-                prev_path: str = None, prev_item: sll = None):
+                prev_path: str = None, prev_item: sllnode = None):
     # if first_run and os.path.isdir(path):
     #     parent_dirs = os.listdir(path)
     #     for dir in parent_dirs:
@@ -86,11 +86,11 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
             new_lang = LanguageProjects(item)
             new_path = path + '/' + item
             if prev_item is None:
-                new_item = sll(item)
+                new_item = sllnode(item)
                 read_images(projects, new_path, new_lang, path, new_item)
             else:
             # paths.append({new_path:[]})
-                new_item = sll(item)
+                new_item = sllnode(item)
                 new_item.set_prev(prev_item)
                 # print(new_item.get_prev().get_data())
                 read_images(projects, new_path, new_lang, path, new_item)
