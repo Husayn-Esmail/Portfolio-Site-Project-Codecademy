@@ -71,8 +71,8 @@ class sll:
         self.__prev = node
 
 
-@profile
-def read_images(projects, path: str, project: LanguageProjects = None,
+# @profile
+def read_images(projects: list, path: str, project: LanguageProjects = None,
                 prev_path: str = None, prev_item: sll = None):
     # if first_run and os.path.isdir(path):
     #     parent_dirs = os.listdir(path)
@@ -80,7 +80,8 @@ def read_images(projects, path: str, project: LanguageProjects = None,
     #         paths.append({dir: []})
     #     first_run = False
     # FIXME: Still need to tailor output to something desirable
-    if os.path.isdir(path):
+    is_dir = os.path.isdir(path)
+    if is_dir:
         listed = os.listdir(path)
         for item in listed:
             new_lang = LanguageProjects(item)
@@ -100,7 +101,14 @@ def read_images(projects, path: str, project: LanguageProjects = None,
         items = os.listdir(prev_path)
         # print(prev_item.get_prev().get_data())
         # while loop iterating back to prev = none to figure out parent directory
-        new_project = Project(prev_item.get_prev().get_data(), items)
+        temp = prev_item
+        while temp != None:
+            temp = prev_item.get_prev() # doesn't ever return None
+        image_dir = prev_item.get_prev().get_data()
+        new_project = Project(image_dir, items)
+        for item in projects:
+            if item.get_prog_language() == temp:
+                item.add_project(new_project)
         print(new_project.__dict__)
         # print(prev_item.get_data())
         # for item in projects:
