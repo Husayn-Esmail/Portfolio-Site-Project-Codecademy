@@ -1,11 +1,10 @@
-from cgi import test
 import pytest
-from recursive_indexer import sll
+from recursive import recursive_indexer
 
 class TestSll:
     def setup(self):
         self.data = "some data"
-        self.sls = sll(self.data)
+        self.sls = recursive_indexer.sll(self.data)
     
     def test_get_data(self):
         assert self.sls.get_data() == self.data
@@ -19,6 +18,9 @@ class TestSll:
         assert self.sls.get_prev() == None
     
     def test_set_prev(self):
-        new_node = sll("other data")
+        new_node = recursive_indexer.sll("other data")
         self.sls.set_prev(new_node)
         assert self.sls.get_prev() == new_node
+
+if __name__ == "__main__":
+    pytest.main()

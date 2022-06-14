@@ -3,8 +3,7 @@ from timeit import timeit
 import os
 from memory_profiler import profile
 
-path = 'portfolio-site/static/img'
-paths = []
+
 
 class Project:
     def __init__(self, name, images):
@@ -116,9 +115,10 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
 
 
 if __name__ == "__main__":
+    path = 'portfolio-site/static/img'
+    paths = []
     projects = []
     read_images(projects, path)
-
-# print(timeit(stmt = statement, number = 5000))
-# for path in paths:
-#     print(path)
+    # print(timeit(stmt = statement, number = 5000))
+    # for path in paths:
+    #     print(path)
