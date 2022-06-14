@@ -2,6 +2,7 @@ lab4/
 CleanCodePythonWebScrapeAPI/
 portfolio_venv/
 portfolio_env/
+portfolio-env
 .DS_STORE
 static/.DS_STORE
 *.pyc
