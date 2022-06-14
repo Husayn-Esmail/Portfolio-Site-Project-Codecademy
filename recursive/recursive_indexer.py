@@ -90,17 +90,17 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
     if is_dir:
         listed = os.listdir(path)
         for item in listed:
-            new_lang = LanguageProjects(item)
-            new_path = path + '/' + item
-            if prev_item is None:
-                new_item = sllnode(item)
-                read_images(projects, new_path, new_lang, path, new_item)
-                projects.append(new_lang)
-            else:
-                new_item = sllnode(item)
-                new_item.set_prev(prev_item)
-                read_images(projects, new_path, new_lang, path, new_item)
-
+            if item != "favicons": # excludes favicons
+                new_lang = LanguageProjects(item)
+                new_path = path + '/' + item
+                if prev_item is None:
+                    new_item = sllnode(item)
+                    read_images(projects, new_path, new_lang, path, new_item)
+                    projects.append(new_lang)
+                else:
+                    new_item = sllnode(item)
+                    new_item.set_prev(prev_item)
+                    read_images(projects, new_path, new_lang, path, new_item)
     else:
         items = os.listdir(prev_path)
         # print(prev_item.get_prev().get_data())
