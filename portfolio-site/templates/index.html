@@ -19,7 +19,7 @@
 <section id="projects">
     <!-- load in projects -->
     <script type="text/javascript">
-        var projects = {{ data|tojson }};
+        var projects_from_server = {{ data|tojson }};
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <!-- <script type="text/javascript">

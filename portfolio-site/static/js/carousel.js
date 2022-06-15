@@ -2,8 +2,8 @@
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
 let parsed_projects = [];
-for (let i = 0; i < projects.length; i++) {
-    parsed_projects.push(JSON.parse(projects[i]));
+for (let i = 0; i < projects_from_server.length; i++) {
+    parsed_projects.push(JSON.parse(projects_from_server[i]));
 }
 
 console.log(parsed_projects);
