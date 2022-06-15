@@ -1,7 +1,6 @@
 # from timeit import timeit
 # statement = ''''''
 import os
-from typing_extensions import Self
 from memory_profiler import profile
 
 
@@ -71,8 +70,10 @@ class LanguageProjects:
     Represents a compilation of projects for a specific programming language.
     '''
     def __init__(self, prog_language: str):
-        '''Upon instantiation, only requires the programming language to be
-        specified. Projects can be updated later.'''
+        '''
+        Upon instantiation, only requires the programming language to be
+        specified. Projects can be updated later.
+        '''
         self.__prog_language = prog_language
         self.__projects: Project = []
     
@@ -135,15 +136,15 @@ class sllnode:
         self.__prev = None
     
     def get_data(self):
-        '''
+        """
         Returns the node's data.
-        '''
+        """
         return self.__data
     
     def get_prev(self):
-        '''
+        """
         Returns the node's previous node.
-        '''
+        """
         return self.__prev
     
     def set_data(self, new_data):
@@ -153,7 +154,7 @@ class sllnode:
         self.__data = new_data
         return None
 
-    def set_prev(self, node: Self):
+    def set_prev(self, node: 'sllnode'):
         '''
         Used to set the previous node of a node. Requires another node.
         '''
@@ -164,13 +165,13 @@ def read_images(projects: list,
                 path: str,
                 prev_path: str = None, 
                 prev_item: sllnode = None):
-    '''
+    """
     Recursively traverses a path to determine it's contents. It populates
     a list which is passed in (projects). Requires the projects list and path.
     prev_path and prev_item default as None and are updated as the function is
     recursively called. As it comes out, it builds the list of objects
     using Project, sllnode and LanguageProjects.
-    '''
+    """
     is_dir = os.path.isdir(path)
     if is_dir:
         dir_contents = os.listdir(path)
