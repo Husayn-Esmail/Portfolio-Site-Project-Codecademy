@@ -85,7 +85,7 @@ class sllnode:
 
 
 # @profile
-def read_images(projects: list, path: str, project: LanguageProjects = None,
+def read_images(projects: list, path: str,
                 prev_path: str = None, prev_item: sllnode = None):
     # FIXME: Need to ensure that it only adds one of each project to the object's list
     is_dir = os.path.isdir(path)
@@ -98,13 +98,12 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
             if prev_item is None:
                 new_item = sllnode(file_name)
                 projects.append(new_lang)
-                read_images(projects, new_path, new_lang, path, new_item)
+                read_images(projects, new_path, prev_path=path, prev_item=new_item)
             else:
                 new_item = sllnode(file_name)
                 new_item.set_prev(prev_item)
-                read_images(projects, new_path, new_lang, path, new_item)
+                read_images(projects, new_path, prev_path=path, prev_item=new_item)
     else:
-        print(projects)
         items = os.listdir(prev_path)
         lang = prev_item
         while lang.get_prev() != None:
@@ -112,9 +111,14 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
         lang = lang.get_data()
         name = prev_item.get_prev().get_data()
         new_project = Project(name, items)
-        for item in projects:
-            if item.get_prog_language() == lang:
-                item.add_project(new_project)
+        for technology in projects:
+            if technology.get_prog_language() == lang:
+                exist = False
+                for project in technology.get_projects():
+                    if project.get_name() == new_project.get_name():
+                        exist = True
+                if not exist:
+                    technology.add_project(new_project)
 
 
 if __name__ == "__main__":
