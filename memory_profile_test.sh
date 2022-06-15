@@ -1,5 +1,5 @@
 #!/bin/bash
 # profiles the program  assuming you've added the @profile decorator
-mprof run test.py
+mprof run recursive/recursive_indexer.py
 # plots the memory usage in respect to time
 mprof plot
