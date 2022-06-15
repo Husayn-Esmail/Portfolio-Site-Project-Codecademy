@@ -8,3 +8,6 @@ pyqt5
 
 # for using .env and .flaskenv files
 python-dotenv
+
+# for converting complex datatypes to json
+jsonpickle

@@ -2,7 +2,7 @@
 # statement = ''''''
 import os
 from memory_profiler import profile
-
+import jsonpickle
 
 class Project:
     '''
@@ -54,6 +54,9 @@ class Project:
     def get_name(self):
         '''Returns the project name'''
         return self.__name
+    
+    def get_json(self):
+        return jsonpickle.encode(self)
     
     def __str__(self):
         '''Produces a string version of the project.'''
@@ -215,6 +218,11 @@ if __name__ == "__main__":
     path = 'portfolio-site/static/img'
     projects = []
     read_images(projects, path)
+    x = projects[0].get_projects()[0].get_json()
+    print(x)
+    print(type(x))
+    x_decode = jsonpickle.decode(x)
+    print(type(x_decode))
     # for item in projects:
     #     print(item)
     #     for project in item.get_projects():
