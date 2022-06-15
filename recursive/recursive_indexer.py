@@ -1,39 +1,58 @@
-from fileinput import filename
-from hashlib import new
 from timeit import timeit
-# statement = """"""
+# statement = ''''''
 import os
 from memory_profiler import profile
 
 
 class Project:
-    def __init__(self, name, images):
+    '''
+    Represents a project results structure.
+    '''
+    def __init__(self, name: str, images: list):
+        '''
+        Requires a name and a list of image names upon instantiation, can have
+        a description added to the project later.
+        '''
         self.__name = name
         self.__images = images
         self.__description = ""
 
-    def set_name(self, new_name):
+    def set_name(self, new_name: str):
+        '''sets name of project, requires new_name'''
         self.__name = new_name
+        return None
 
     def add_image(self, image: str):
+        '''Used to add an image to list of images, requires an image name.'''
         self.__images.append(image)
-    
-    def set_images(self, new_list):
+        return None
+
+    def set_images(self, new_list: list):
+        '''Used to set the entire list of images. Requires a list of images.'''
         self.__images = new_list
+        return None
     
     def get_images(self):
+        '''Returns the project list of images. '''
         return self.__images
     
-    def set_description(self, description):
+    def set_description(self, description: str):
+        '''
+        Used to set the project description. Requires one argument description
+        '''
         self.__description = description
-    
+        return None
+
     def get_description(self):
+        '''Returns the project description.'''
         return self.__description
     
     def get_name(self):
+        '''Returns the project name'''
         return self.__name
     
     def __str__(self):
+        '''Produces a string version of the project.'''
         return """
         name: %s
         images: %s
@@ -87,7 +106,6 @@ class sllnode:
 # @profile
 def read_images(projects: list, path: str,
                 prev_path: str = None, prev_item: sllnode = None):
-    # FIXME: Need to ensure that it only adds one of each project to the object's list
     is_dir = os.path.isdir(path)
     if is_dir:
         dir_contents = os.listdir(path)
@@ -129,4 +147,5 @@ if __name__ == "__main__":
         print(item)
         for project in item.get_projects():
             print(project)
-    # print(timeit(stmt = statement, number = 5000))
+
+# print(timeit(stmt = statement, number = 5000))
