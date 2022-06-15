@@ -1,6 +1,7 @@
 # from timeit import timeit
 # statement = ''''''
 import os
+from typing_extensions import Self
 from memory_profiler import profile
 
 
@@ -23,12 +24,16 @@ class Project:
         return None
 
     def add_image(self, image: str):
-        '''Used to add an image to list of images, requires an image name.'''
+        '''
+        Used to add an image to list of images, requires an image name.
+        '''
         self.__images.append(image)
         return None
 
     def set_images(self, new_list: list):
-        '''Used to set the entire list of images. Requires a list of images.'''
+        '''
+        Used to set the entire list of images. Requires a list of images.
+        '''
         self.__images = new_list
         return None
     
@@ -57,7 +62,9 @@ class Project:
         name: %s
         images: %s
         description: %s
-        """ % (self.get_name(), str(self.get_images()), self.get_description())
+        """ % (self.get_name(), 
+                str(self.get_images()), 
+                self.get_description())
 
 class LanguageProjects:
     '''
@@ -114,26 +121,49 @@ class LanguageProjects:
         """ % (self.get_prog_language(), str(self.get_projects()))
     
 class sllnode:
+    '''
+    Represents a node of a singly linked list. This node works in reverse
+    compared to a normal node. It holds data and a previous rather than
+    a next.
+    '''
     def __init__(self, data):
+        '''
+        Must be initialized with a single argument, data which can be of any
+        type.
+        '''
         self.__data = data
         self.__prev = None
     
     def get_data(self):
+        '''
+        Returns the node's data.
+        '''
         return self.__data
     
     def get_prev(self):
+        '''
+        Returns the node's previous node.
+        '''
         return self.__prev
     
     def set_data(self, new_data):
+        '''
+        Used to set the data value of a node. Requires new data of any type.
+        '''
         self.__data = new_data
-    
-    def set_prev(self, node):
+        return None
+
+    def set_prev(self, node: Self):
+        '''
+        Used to set the previous node of a node. Requires another node.
+        '''
         self.__prev = node
 
-
 # @profile
-def read_images(projects: list, path: str,
-                prev_path: str = None, prev_item: sllnode = None):
+def read_images(projects: list, 
+                path: str,
+                prev_path: str = None, 
+                prev_item: sllnode = None):
     is_dir = os.path.isdir(path)
     if is_dir:
         dir_contents = os.listdir(path)
@@ -144,11 +174,17 @@ def read_images(projects: list, path: str,
             if prev_item is None:
                 new_item = sllnode(file_name)
                 projects.append(new_lang)
-                read_images(projects, new_path, prev_path=path, prev_item=new_item)
+                read_images(projects, 
+                            new_path, 
+                            prev_path=path, 
+                            prev_item=new_item)
             else:
                 new_item = sllnode(file_name)
                 new_item.set_prev(prev_item)
-                read_images(projects, new_path, prev_path=path, prev_item=new_item)
+                read_images(projects, 
+                new_path, 
+                prev_path=path, 
+                prev_item=new_item)
     else:
         items = os.listdir(prev_path)
         lang = prev_item
@@ -171,9 +207,9 @@ if __name__ == "__main__":
     path = 'portfolio-site/static/img'
     projects = []
     read_images(projects, path)
-    for item in projects:
-        print(item)
-        for project in item.get_projects():
-            print(project)
+    # for item in projects:
+    #     print(item)
+    #     for project in item.get_projects():
+    #         print(project)
 
 # print(timeit(stmt = statement, number = 5000))
