@@ -1,10 +1,12 @@
 // debated creating the secondary nav with js as well. 
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
+let parsed_projects = [];
+for (let i = 0; i < projects.length; i++) {
+    parsed_projects.push(JSON.parse(projects[i]));
+}
 
-// const new_images = images.json();
-console.log(images);
-console.log(things);
+console.log(parsed_projects);
 
 // function myFunc(vars) {
 //     console.log(vars);
@@ -178,4 +180,4 @@ class Technology {
     }
 }
 
-module.exports = { Project, Technology }
+// export { Project, Technology };
