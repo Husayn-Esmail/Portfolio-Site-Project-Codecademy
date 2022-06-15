@@ -60,26 +60,54 @@ class Project:
         """ % (self.get_name(), str(self.get_images()), self.get_description())
 
 class LanguageProjects:
-    def __init__(self, prog_language):
+    '''
+    Represents a compilation of projects for a specific programming language.
+    '''
+    def __init__(self, prog_language: str):
+        '''Upon instantiation, only requires the programming language to be
+        specified. Projects can be updated later.'''
         self.__prog_language = prog_language
-        self.__projects = []
+        self.__projects: Project = []
     
     def get_prog_language(self):
+        '''
+        Returns programming language name.
+        '''
         return self.__prog_language
     
     def get_projects(self):
+        '''
+        Returns list of project objects.
+        '''
         return self.__projects
     
     def add_project(self, project: Project):
+        '''
+        Allows functionality to add projects to project list. Requires a
+        new project.
+        '''
         self.__projects.append(project)
+        return None
 
-    def set_projects(self, projects):
+    def set_projects(self, projects: list):
+        '''
+        Allows to set an entire list of projects all at once (overriding
+        whatever is currently in self.__projects). Requires one argument,
+        a list of projects.
+        '''
         self.__projects = projects
+        return None
 
-    def set_prog_language(self, prog_language):
+    def set_prog_language(self, prog_language: str):
+        '''
+        Allows functionality to update the programming language. Requires one
+        argument, the prog_language.
+        '''
         self.__prog_language = prog_language
+        return None
     
     def __str__(self):
+        '''String representation of the object'''
         return """
         prog_language = %s
         projects = %s
