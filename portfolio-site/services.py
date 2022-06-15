@@ -100,93 +100,9 @@ class TestDLLNode(unittest.TestCase):
         actual = node1.get_data()
         self.assertEqual(actual, expected, "set_data changes the value of data")
 
-# def read_files():
-#     # lists all the subfolders in img folder.
-#     files = []
-#     img_path = './static/img'
-
-#     try:
-#         main_folders = os.listdir(img_path)
-#         # cascading path additions
-#         paths = DoubleLinkedList(None, None)
-#         new_paths = []
-#         for folder in main_folders:
-#             new_paths.append(img_path+'/%s' % folder)
-#         print(new_paths)
-#     except NotADirectoryError:
-#         # if not a directory use the previous path
-#         files = os.listdir('')
-#     print(main_folders)
-#     """
-#     We want to do the following:
-#     go through each folder recursively,
-#     while entering each folder, store the name of said folder,
-#     structure should be as such anyways
-#     img
-#     --c
-#     -final grade calculator
-#         - image 1
-#         - image 2
-#         - image 3
-#     - another c project
-#         -image 1
-#         -image 2
-#     -- python
-#     - html api
-#         -image 1
-#         -image 2
-#     ...
-#     so at most it should be only going 2 directories deep. 
-#     """        
-
-"""
-if at any point I need three fields such as the ability to read the project
-folder i.e. img/C/project_name/images then I need to create an object that
-is of this structure
-
-class Project:
-    '''
-    Used to store the assets of a project
-    is to be used in conjunction with Language Projects.
-    '''
-    def __init__(self, name, images):
-        self._name = name
-        self._images = images
-        self._description = ""
-
-class LanguageProjects:
-    '''
-    Holds the name of the programming language
-    and stores objects that hold all information
-    necessary for a project.
-    '''
-    def __init__(self, prog_language):
-        self._prog_language = prog_language
-        self._projects = [projectObjects] 
-"""
-
-
-def read_images(path: str):
-    """
-    Gets all the folders in a given path and traverses one level down to obtain
-    all the filenames within the folders of that path. Stores the contents of
-    each folder next to the folder name in a dictionary.
-    returns the dictionary
-    """
-    outer_directories = os.listdir(path)
-    images = {}
-    for directory in outer_directories:
-        if directory == 'favicons':
-            continue
-        temp_path = path + '/' + directory
-        images[directory] = os.listdir(temp_path)
-    return images
-
 
 
 if __name__ == '__main__':
-    path = "./static/img"
-    print(read_images(path))
     unittest.main()
     
 
