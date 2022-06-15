@@ -55,7 +55,11 @@ class Project:
         '''Returns the project name'''
         return self.__name
     
-    def get_json(self):
+    def to_json(self):
+        '''
+        Converts Project object to json format so it can be used 
+        by javascript.
+        '''
         return jsonpickle.encode(self)
     
     def __str__(self):
@@ -116,6 +120,13 @@ class LanguageProjects:
         '''
         self.__prog_language = prog_language
         return None
+    
+    def to_json(self):
+        '''
+        Converts Project object to json format so it can be used 
+        by javascript.
+        '''
+        return jsonpickle.encode(self)
     
     def __str__(self):
         '''String representation of the object'''
@@ -218,7 +229,7 @@ if __name__ == "__main__":
     path = 'portfolio-site/static/img'
     projects = []
     read_images(projects, path)
-    x = projects[0].get_projects()[0].get_json()
+    x = projects[0].get_projects()[0].to_json()
     print(x)
     print(type(x))
     x_decode = jsonpickle.decode(x)

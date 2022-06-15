@@ -1,6 +1,6 @@
 import pytest
 from recursive import recursive_indexer
-
+import jsonpickle
 class TestLanguageProjects:
     def setup(self):
         self.prog_lang = "test"
@@ -26,6 +26,24 @@ class TestLanguageProjects:
         projects = ["item"]
         self.project.set_projects(projects)
         assert self.project.get_projects() == projects
+    
+    def test_get_json_returns_value(self):
+        assert self.project.to_json() is not None
+
+    def test_type_get_json(self):
+        expected = str
+        actual = type(self.project.to_json())
+        assert actual == expected
+
+    def test_get_json_is_object(self):
+        expected = recursive_indexer.LanguageProjects
+        actual = type(jsonpickle.decode(self.project.to_json()))
+        assert actual == expected
+    
+    def test_get_json_retains_data(self):
+        expected = self.project.__dict__
+        actual = jsonpickle.decode(self.project.to_json()).__dict__
+        assert actual == expected
 
 
 if __name__ == '__main__':
