@@ -1,3 +1,4 @@
+from fileinput import filename
 from hashlib import new
 from timeit import timeit
 # statement = """"""
@@ -86,27 +87,25 @@ class sllnode:
 # @profile
 def read_images(projects: list, path: str, project: LanguageProjects = None,
                 prev_path: str = None, prev_item: sllnode = None):
-    # FIXME: Still need to tailor output to something desirable
+    # FIXME: Need to ensure that it only adds one of each project to the object's list
     is_dir = os.path.isdir(path)
     if is_dir:
-        listed = os.listdir(path)
-        for item in listed:
-            if item == "favicons": continue # excludes favicons
-            new_lang = LanguageProjects(item)
-            new_path = path + '/' + item
+        dir_contents = os.listdir(path)
+        for file_name in dir_contents:
+            if file_name == "favicons": continue # excludes favicons
+            new_lang = LanguageProjects(file_name)
+            new_path = path + '/' + file_name
             if prev_item is None:
-                new_item = sllnode(item)
+                new_item = sllnode(file_name)
                 projects.append(new_lang)
                 read_images(projects, new_path, new_lang, path, new_item)
             else:
-                new_item = sllnode(item)
+                new_item = sllnode(file_name)
                 new_item.set_prev(prev_item)
                 read_images(projects, new_path, new_lang, path, new_item)
     else:
         print(projects)
         items = os.listdir(prev_path)
-        # print(prev_item.get_prev().get_data())
-        # while loop iterating back to prev = none to figure out parent directory
         lang = prev_item
         while lang.get_prev() != None:
             lang = lang.get_prev()
@@ -116,10 +115,6 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
         for item in projects:
             if item.get_prog_language() == lang:
                 item.add_project(new_project)
-        # print(new_project.__dict__)
-        # print(prev_item.get_data())
-        # for item in projects:
-        #     print(item.__dict__)
 
 
 if __name__ == "__main__":
