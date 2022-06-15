@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from .services import read_images
+from recursive.recursive_indexer import read_images
 
 def create_app(test_config=None):
     # create and configure the app
@@ -24,8 +24,9 @@ def create_app(test_config=None):
 
     @app.route('/', methods=['GET'])
     def index():
+        projects = []
         path = "portfolio-site/static/img"
-        data = read_images(path)
+        data = read_images(path, projects)
         print(data)
         return render_template('index.html', data=data)
 

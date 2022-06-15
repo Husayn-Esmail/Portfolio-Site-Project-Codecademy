@@ -1,4 +1,10 @@
+# for running the webserver
 flask
+
+# for profiling scripts required by backend code
 memory-profiler
 matplotlib
 pyqt5
+
+# for using .env and .flaskenv files
+python-dotenv
