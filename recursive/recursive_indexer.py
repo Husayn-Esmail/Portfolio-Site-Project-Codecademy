@@ -1,3 +1,4 @@
+from hashlib import new
 from timeit import timeit
 # statement = """"""
 import os
@@ -90,28 +91,30 @@ def read_images(projects: list, path: str, project: LanguageProjects = None,
     if is_dir:
         listed = os.listdir(path)
         for item in listed:
-            if item != "favicons": # excludes favicons
-                new_lang = LanguageProjects(item)
-                new_path = path + '/' + item
-                if prev_item is None:
-                    new_item = sllnode(item)
-                    read_images(projects, new_path, new_lang, path, new_item)
-                    projects.append(new_lang)
-                else:
-                    new_item = sllnode(item)
-                    new_item.set_prev(prev_item)
-                    read_images(projects, new_path, new_lang, path, new_item)
+            if item == "favicons": continue # excludes favicons
+            new_lang = LanguageProjects(item)
+            new_path = path + '/' + item
+            if prev_item is None:
+                new_item = sllnode(item)
+                projects.append(new_lang)
+                read_images(projects, new_path, new_lang, path, new_item)
+            else:
+                new_item = sllnode(item)
+                new_item.set_prev(prev_item)
+                read_images(projects, new_path, new_lang, path, new_item)
     else:
+        print(projects)
         items = os.listdir(prev_path)
         # print(prev_item.get_prev().get_data())
         # while loop iterating back to prev = none to figure out parent directory
-        temp = prev_item
-        while temp.get_prev() != None:
-            temp = temp.get_prev()
-        image_dir = temp.get_data()
-        new_project = Project(image_dir, items)
+        lang = prev_item
+        while lang.get_prev() != None:
+            lang = lang.get_prev()
+        lang = lang.get_data()
+        name = prev_item.get_prev().get_data()
+        new_project = Project(name, items)
         for item in projects:
-            if item.get_prog_language() == temp:
+            if item.get_prog_language() == lang:
                 item.add_project(new_project)
         # print(new_project.__dict__)
         # print(prev_item.get_data())
@@ -125,4 +128,6 @@ if __name__ == "__main__":
     read_images(projects, path)
     for item in projects:
         print(item)
+        for project in item.get_projects():
+            print(project)
     # print(timeit(stmt = statement, number = 5000))
