@@ -14,7 +14,8 @@ instance/
 __pycache__/
 .coverage
 htmlcov/
-
+node_modules
+*.json
 dist/
 build/
 *.egg-info/

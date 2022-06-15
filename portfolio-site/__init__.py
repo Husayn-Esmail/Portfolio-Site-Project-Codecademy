@@ -26,8 +26,8 @@ def create_app(test_config=None):
     def index():
         projects = []
         path = "portfolio-site/static/img"
-        data = read_images(path, projects)
-        print(data)
+        data = read_images(projects, path)
+        print(projects)
         return render_template('index.html', data=data)
 
     @app.route('/contact', methods=['GET', 'POST'])
