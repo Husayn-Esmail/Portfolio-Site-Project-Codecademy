@@ -164,6 +164,13 @@ def read_images(projects: list,
                 path: str,
                 prev_path: str = None, 
                 prev_item: sllnode = None):
+    '''
+    Recursively traverses a path to determine it's contents. It populates
+    a list which is passed in (projects). Requires the projects list and path.
+    prev_path and prev_item default as None and are updated as the function is
+    recursively called. As it comes out, it builds the list of objects
+    using Project, sllnode and LanguageProjects.
+    '''
     is_dir = os.path.isdir(path)
     if is_dir:
         dir_contents = os.listdir(path)
