@@ -2,8 +2,9 @@
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
 
-
-
+// const new_images = images.json();
+console.log(images);
+console.log(things);
 
 // function myFunc(vars) {
 //     console.log(vars);

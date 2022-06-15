@@ -26,9 +26,16 @@ def create_app(test_config=None):
     def index():
         projects = []
         path = "portfolio-site/static/img"
-        data = read_images(projects, path)
-        print(projects)
-        return render_template('index.html', data=data)
+        read_images(projects, path)
+        project_langs = []
+        project_projects = []
+        for project in projects:
+            project_langs.append(project.get_prog_language())
+            project_projects.append(project.get_projects())
+
+        data = project_langs
+        a_list = project_projects
+        return render_template('index.html', data=data, a_list=a_list)
 
     @app.route('/contact', methods=['GET', 'POST'])
     def contact():
