@@ -1,12 +1,7 @@
 // debated creating the secondary nav with js as well. 
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
-let parsed_projects = [];
-for (let i = 0; i < projects_from_server.length; i++) {
-    parsed_projects.push(JSON.parse(projects_from_server[i]));
-}
 
-console.log(parsed_projects);
 
 // function myFunc(vars) {
 //     console.log(vars);
@@ -178,6 +173,29 @@ class Technology {
     set set_prog_language(new_prog_language) {
         this.__prog_language = new_prog_language;
     }
+
+    set set_projects(new_projects) {
+        this.__projects = new_projects;
+    }
 }
+
+let parsed_projects = [];
+for (let i = 0; i < projects_from_server.length; i++) {
+    parsed_projects.push(JSON.parse(projects_from_server[i]));
+}
+
+console.log(parsed_projects);
+
+let technologies = [];
+for (let i = 0; i < parsed_projects.length; i++) {
+    let prog_lang = parsed_projects[i]._LanguageProjects__prog_language;
+    let obj_projects = parsed_projects[i]._LanguageProjects__projects;
+    let newTech = new Technology(prog_lang);
+    newTech.set_projects = obj_projects;
+    technologies.push(newTech);
+}
+
+console.log(technologies);
+
 
 // export { Project, Technology };

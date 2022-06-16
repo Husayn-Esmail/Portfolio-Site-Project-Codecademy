@@ -22,9 +22,6 @@
         var projects_from_server = {{ data|tojson }};
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/carousel.js') }}"></script>
-    <!-- <script type="text/javascript">
-        myFunc({{ data|tojson }});
-    </script> -->
     <!-- all other sections must start after this -->
 </section>
 {% endblock %}
