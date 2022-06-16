@@ -151,7 +151,7 @@ class Project {
         this.__images = images;
     }
 
-    set setDescription(newDescription) {
+    set description(newDescription) {
         this.__description = newDescription;
     }
 }
@@ -188,8 +188,6 @@ for (let i = 0; i < projects_from_server.length; i++) {
     parsed_projects.push(JSON.parse(projects_from_server[i]));
 }
 
-console.log(parsed_projects);
-
 let technologies = [];
 
 // convert python objects provided by server into Technology and Project
@@ -202,7 +200,9 @@ for (let i = 0; i < parsed_projects.length; i++) {
     for (let j = 0; j < obj_projects.length; j++) {
         const proj_name = obj_projects[j]._Project__name;
         const proj_images = obj_projects[j]._Project__images;
+        const proj_desc = obj_projects[j]._Project__description;
         const proj_obj = new Project(proj_name, proj_images);
+        proj_obj.description = proj_desc;
         newTech.add_project(proj_obj);
     }
     technologies.push(newTech);

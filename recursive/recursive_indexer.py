@@ -236,7 +236,7 @@ def get_descriptions(path: str, projects: list):
     for project in projects:
         project_name = project.get_name()
         desc_file_name = project_name + '.txt'
-        full_path = path + desc_file_name
+        full_path = path + '/' + desc_file_name
         try:
             with open(full_path, "r") as f:
                 content = f.read()
@@ -262,7 +262,7 @@ def get_projects_for_display(image_path: str, desc_path: str):
 
 if __name__ == "__main__":
     path = 'portfolio-site/static/img'
-    path_for_desc = 'portfolio-site/static/descriptions/'
+    path_for_desc = 'portfolio-site/static/descriptions'
     new_list = get_projects_for_display(path, path_for_desc)
     for ls in new_list:
         print(ls.get_projects()[0].get_description())
