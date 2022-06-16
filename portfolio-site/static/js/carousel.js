@@ -195,8 +195,8 @@ let technologies = [];
 // convert python objects provided by server into Technology and Project
 // Objects
 for (let i = 0; i < parsed_projects.length; i++) {
-    const prog_lang = parsed_projects[i]._LanguageProjects__prog_language;
-    const obj_projects = parsed_projects[i]._LanguageProjects__projects;
+    const prog_lang = parsed_projects[i]._ProjectsTechnology__prog_language;
+    const obj_projects = parsed_projects[i]._ProjectsTechnology__projects;
     const newTech = new Technology(prog_lang);
     // iterate through projects and create Project objects
     for (let j = 0; j < obj_projects.length; j++) {

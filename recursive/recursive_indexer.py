@@ -72,7 +72,7 @@ class Project:
                 str(self.get_images()), 
                 self.get_description())
 
-class LanguageProjects:
+class ProjectsTechnology:
     '''
     Represents a compilation of projects for a specific programming language.
     '''
@@ -191,7 +191,7 @@ def read_images(projects: list,
         dir_contents = os.listdir(path)
         for file_name in dir_contents:
             if file_name == "favicons": continue # excludes favicons
-            new_lang = LanguageProjects(file_name)
+            new_lang = ProjectsTechnology(file_name)
             new_path = path + '/' + file_name
             if prev_item is None:
                 new_item = sllnode(file_name)

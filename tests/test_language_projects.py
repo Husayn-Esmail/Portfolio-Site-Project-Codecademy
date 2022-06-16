@@ -4,7 +4,7 @@ import jsonpickle
 class TestLanguageProjects:
     def setup(self):
         self.prog_lang = "test"
-        self.project = recursive_indexer.LanguageProjects(self.prog_lang)
+        self.project = recursive_indexer.ProjectsTechnology(self.prog_lang)
     
     def test_get_prog_language(self):
         assert self.project.get_prog_language() == self.prog_lang
@@ -36,7 +36,7 @@ class TestLanguageProjects:
         assert actual == expected
 
     def test_get_json_is_object(self):
-        expected = recursive_indexer.LanguageProjects
+        expected = recursive_indexer.ProjectsTechnology
         actual = type(jsonpickle.decode(self.project.to_json()))
         assert actual == expected
     
