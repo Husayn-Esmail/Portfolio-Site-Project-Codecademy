@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from recursive.recursive_indexer import read_images
+from recursive.recursive_indexer import index_images
 
 def create_app(test_config=None):
     # create and configure the app
@@ -26,7 +26,7 @@ def create_app(test_config=None):
     def index():
         projects = []
         path = "portfolio-site/static/img"
-        read_images(projects, path)
+        index_images(projects, path)
         # the projects out of read_images are not json serializable, must be
         # converted first.
         json_projects = []

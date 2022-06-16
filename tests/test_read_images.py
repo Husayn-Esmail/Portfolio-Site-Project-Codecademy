@@ -6,7 +6,7 @@ class TestRecursiveIndexer:
     def setup(self):
         self.path = 'portfolio-site/static/img'
         self.projects = []
-        recursive_indexer.read_images(self.projects, self.path)
+        recursive_indexer.index_images(self.projects, self.path)
     
     def test_projects_not_empty(self):
         assert self.projects != []

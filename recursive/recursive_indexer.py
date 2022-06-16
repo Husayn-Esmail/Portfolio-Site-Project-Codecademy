@@ -175,7 +175,7 @@ class sllnode:
         self.__prev = node
 
 # @profile
-def read_images(projects: list, 
+def index_images(projects: list, 
                 path: str,
                 prev_path: str = None, 
                 prev_item: sllnode = None):
@@ -196,14 +196,14 @@ def read_images(projects: list,
             if prev_item is None:
                 new_item = sllnode(file_name)
                 projects.append(new_lang)
-                read_images(projects, 
+                index_images(projects, 
                             new_path, 
                             prev_path=path, 
                             prev_item=new_item)
             else:
                 new_item = sllnode(file_name)
                 new_item.set_prev(prev_item)
-                read_images(projects, 
+                index_images(projects, 
                 new_path, 
                 prev_path=path, 
                 prev_item=new_item)
@@ -224,11 +224,44 @@ def read_images(projects: list,
                 if not exist:
                     technology.add_project(new_project)
 
+def get_descriptions(path: str, projects: list):
+    '''
+    Because opening and reading files will likely be a slow operation, I want
+    to do it as few times as possible. iterate through projects, get and
+    populate their descriptions based on project name. Ideally I would like to
+    make the description capturing and indexing happen at the same time...
+    eventually... 
+    '''
+    for project in projects:
+        project_name = project.get_name()
+        desc_file_name = project_name + '.txt'
+        try:
+            with open(desc_file_name, "r") as f:
+                content = f.read()
+                project.set_description(content)
+        except Exception as exc:
+            print(exc)
+
+
+def get_projects_for_display(image_path: str, desc_path: str):
+    '''
+    requires path to images and path to descriptions.
+    calls helper functions to fully build out each ProjectsTechnology object
+    and returns a list of completely populated objects.
+    '''
+    technologies = []
+    index_images(technologies, image_path)
+    for tech in technologies:
+        tech_projects = tech.get_projects()
+        get_descriptions(desc_path, tech_projects)
+    
+    return technologies
+
 
 if __name__ == "__main__":
     path = 'portfolio-site/static/img'
     projects = []
-    read_images(projects, path)
+    index_images(projects, path)
     x = projects[0].get_projects()[0].to_json()
     print(x)
     print(type(x))
