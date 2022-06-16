@@ -184,7 +184,6 @@ class Technology {
 }
 
 class DisplayTechnology {
-    // pass
     constructor(technologyObject, pathToImages) {        
         this.technology = technologyObject;
         this.path = pathToImages;
@@ -221,7 +220,7 @@ class DisplayTechnology {
          * added to the dom when necessary.
          */
         const subheading = document.createElement('h3');
-        subheading.innerHTML = this.project.name;
+        subheading.innerHTML = project.name;
         subheading.className = 'project-subheading';
         return subheading;
     }
@@ -244,6 +243,7 @@ class DisplayTechnology {
             new_img.className = 'project-image';
             subdiv.appendChild(new_img);
         }
+        return subdiv;
     }
 
     createDescriptionElement(project) {
@@ -256,6 +256,25 @@ class DisplayTechnology {
         return subdiv;
     }
 
+    populateNavButton(button, content) {
+        // sets the button symbol, a class and a click event.
+        button.innerHTML = content;
+        button.className = "nav-button";
+        // click event needs to change.
+        button.addEventListener('click', (event) => {
+            console.log("clicked");
+        });
+        return null;
+    }
+
+    displayNavButtons(div) {
+        let left = document.createElement('p');
+        let right = document.createElement('p');
+        this.populateNavButton(left, '<', div);
+        this.populateNavButton(right, '>', div);
+        div.appendChild(left);
+        div.appendChild(right);
+    }
     // create a function that processes the projects in this technology.
     // Call helper functions to display/get the resources to display such
     // elements.
