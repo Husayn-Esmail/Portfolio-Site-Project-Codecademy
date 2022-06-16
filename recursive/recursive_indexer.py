@@ -17,16 +17,22 @@ class Project:
         self.__images = images
         self.__description = ""
 
+    
+    def get_images(self):
+        '''Returns the project list of images. '''
+        return self.__images
+    
+    def get_description(self):
+        '''Returns the project description.'''
+        return self.__description
+    
+    def get_name(self):
+        '''Returns the project name'''
+        return self.__name
+
     def set_name(self, new_name: str):
         '''sets name of project, requires new_name'''
         self.__name = new_name
-        return None
-
-    def add_image(self, image: str):
-        '''
-        Used to add an image to list of images, requires an image name.
-        '''
-        self.__images.append(image)
         return None
 
     def set_images(self, new_list: list):
@@ -35,26 +41,21 @@ class Project:
         '''
         self.__images = new_list
         return None
-    
-    def get_images(self):
-        '''Returns the project list of images. '''
-        return self.__images
-    
+
     def set_description(self, description: str):
         '''
         Used to set the project description. Requires one argument description
         '''
         self.__description = description
         return None
+    
+    def add_image(self, image: str):
+        '''
+        Used to add an image to list of images, requires an image name.
+        '''
+        self.__images.append(image)
+        return None
 
-    def get_description(self):
-        '''Returns the project description.'''
-        return self.__description
-    
-    def get_name(self):
-        '''Returns the project name'''
-        return self.__name
-    
     def to_json(self):
         '''
         Converts Project object to json format so it can be used 
@@ -235,8 +236,9 @@ def get_descriptions(path: str, projects: list):
     for project in projects:
         project_name = project.get_name()
         desc_file_name = project_name + '.txt'
+        full_path = path + desc_file_name
         try:
-            with open(desc_file_name, "r") as f:
+            with open(full_path, "r") as f:
                 content = f.read()
                 project.set_description(content)
         except Exception as exc:
@@ -260,13 +262,15 @@ def get_projects_for_display(image_path: str, desc_path: str):
 
 if __name__ == "__main__":
     path = 'portfolio-site/static/img'
-    projects = []
-    index_images(projects, path)
-    x = projects[0].get_projects()[0].to_json()
-    print(x)
-    print(type(x))
-    x_decode = jsonpickle.decode(x)
-    print(type(x_decode))
+    path_for_desc = 'portfolio-site/static/descriptions/'
+    new_list = get_projects_for_display(path, path_for_desc)
+    for ls in new_list:
+        print(ls.get_projects()[0].get_description())
+    # x = projects[0].get_projects()[0].to_json()
+    # print(x)
+    # print(type(x))
+    # x_decode = jsonpickle.decode(x)
+    # print(type(x_decode))
     # for item in projects:
     #     print(item)
     #     for project in item.get_projects():
