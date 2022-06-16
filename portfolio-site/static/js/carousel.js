@@ -143,11 +143,11 @@ class Project {
         return this.__images;
     }
 
-    set setName(newName) {
+    set name(newName) {
         this.__name = newName;
     }
 
-    set setImages(images) {
+    set images(images) {
         this.__images = images;
     }
 
@@ -170,11 +170,11 @@ class Technology {
         return this.__projects;
     }
 
-    set set_prog_language(new_prog_language) {
+    set prog_language(new_prog_language) {
         this.__prog_language = new_prog_language;
     }
 
-    set set_projects(new_projects) {
+    set projects(new_projects) {
         this.__projects = new_projects;
     }
 
@@ -212,6 +212,7 @@ console.log(technologies);
 
 class DisplayTechnology {
     // pass
+    // this is essentially going to display the carousel.
 }
 
 // export { Project, Technology };
