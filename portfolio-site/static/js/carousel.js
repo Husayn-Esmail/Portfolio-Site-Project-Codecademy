@@ -177,6 +177,10 @@ class Technology {
     set set_projects(new_projects) {
         this.__projects = new_projects;
     }
+
+    add_project(new_project) {
+        this.__projects.push(new_project);
+    }
 }
 
 let parsed_projects = [];
@@ -191,7 +195,12 @@ for (let i = 0; i < parsed_projects.length; i++) {
     let prog_lang = parsed_projects[i]._LanguageProjects__prog_language;
     let obj_projects = parsed_projects[i]._LanguageProjects__projects;
     let newTech = new Technology(prog_lang);
-    newTech.set_projects = obj_projects;
+    for (let j = 0; j < obj_projects.length; j++) {
+        let proj_name = obj_projects[j]._Project__name;
+        let proj_images = obj_projects[j]._Project__images;
+        let proj_obj = new Project(proj_name, proj_images);
+        newTech.add_project(proj_obj);
+    }
     technologies.push(newTech);
 }
 
