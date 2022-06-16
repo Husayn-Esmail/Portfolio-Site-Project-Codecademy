@@ -191,14 +191,18 @@ for (let i = 0; i < projects_from_server.length; i++) {
 console.log(parsed_projects);
 
 let technologies = [];
+
+// convert python objects provided by server into Technology and Project
+// Objects
 for (let i = 0; i < parsed_projects.length; i++) {
-    let prog_lang = parsed_projects[i]._LanguageProjects__prog_language;
-    let obj_projects = parsed_projects[i]._LanguageProjects__projects;
-    let newTech = new Technology(prog_lang);
+    const prog_lang = parsed_projects[i]._LanguageProjects__prog_language;
+    const obj_projects = parsed_projects[i]._LanguageProjects__projects;
+    const newTech = new Technology(prog_lang);
+    // iterate through projects and create Project objects
     for (let j = 0; j < obj_projects.length; j++) {
-        let proj_name = obj_projects[j]._Project__name;
-        let proj_images = obj_projects[j]._Project__images;
-        let proj_obj = new Project(proj_name, proj_images);
+        const proj_name = obj_projects[j]._Project__name;
+        const proj_images = obj_projects[j]._Project__images;
+        const proj_obj = new Project(proj_name, proj_images);
         newTech.add_project(proj_obj);
     }
     technologies.push(newTech);
@@ -206,5 +210,8 @@ for (let i = 0; i < parsed_projects.length; i++) {
 
 console.log(technologies);
 
+class DisplayTechnology {
+    // pass
+}
 
 // export { Project, Technology };
