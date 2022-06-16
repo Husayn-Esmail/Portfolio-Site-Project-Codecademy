@@ -238,12 +238,22 @@ class DisplayTechnology {
         const project_name = project.name;
         // iterate through images and create img elements
         for (image_name in images) {
-            new_img = document.createElement('img');
-            image_path = `${this.path}/${project_name}/${image_name}`;
+            const new_img = document.createElement('img');
+            const image_path = `${this.path}/${project_name}/${image_name}`;
             new_img.src = image_path;
             new_img.className = 'project-image';
             subdiv.appendChild(new_img);
         }
+    }
+
+    createDescriptionElement(project) {
+        const subdiv = document.createElement('div');
+        const proj_description = project.description;
+        const new_p = document.createElement('p');
+        new_p.className = 'project-description';
+        new_p.innerText = proj_description;
+        subdiv.appendChild(new_p);
+        return subdiv;
     }
 
     // create a function that processes the projects in this technology.
