@@ -185,7 +185,70 @@ class Technology {
 
 class DisplayTechnology {
     // pass
-    // this is essentially going to display the carousel.
+    constructor(technologyObject, pathToImages) {        
+        this.technology = technologyObject;
+        this.path = pathToImages;
+        this.projects = technologyObject.projects;
+    }
+
+    get technology() {
+        return this.technology;
+    }
+
+    set technology(new_technology) {
+        this.technology = new_technology;
+    }
+
+    displayHeading(div) {
+        /**
+         * accepts a div as an argument.
+         * appends a heading (based on the programming language specified in
+         * the technology) to the div passed. returns null
+         */
+        let newHeading = document.createElement('h2');
+        newHeading.innerHTML = this.technology.prog_language;
+        // need to set css classes or ids
+        newHeading.id = this.technology.prog_language;
+        // add newHeading to div
+        div.appendChild(newHeading);
+        return null
+    }
+
+    createSubheadingElement(project) {
+        /**
+         * Accepts a Project object as input.
+         * returns a subheading element for said project which can then be
+         * added to the dom when necessary.
+         */
+        const subheading = document.createElement('h3');
+        subheading.innerHTML = this.project.name;
+        subheading.className = 'project-subheading';
+        return subheading;
+    }
+
+    createImageElements(project) {
+        /**
+         * Iterates through a projects images and creates an element for each
+         * one with a class of project-image.
+         * returns a div containing image elements.
+         */
+        let subdiv = document.createElement('div');
+        subdiv.className = 'images';
+        const images = project.images;
+        const project_name = project.name;
+        // iterate through images and create img elements
+        for (image_name in images) {
+            new_img = document.createElement('img');
+            image_path = `${this.path}/${project_name}/${image_name}`;
+            new_img.src = image_path;
+            new_img.className = 'project-image';
+            subdiv.appendChild(new_img);
+        }
+    }
+
+    // create a function that processes the projects in this technology.
+    // Call helper functions to display/get the resources to display such
+    // elements.
 }
 
 
