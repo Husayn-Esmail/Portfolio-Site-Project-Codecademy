@@ -1,7 +1,7 @@
-from email.mime import image
 from flask import Flask, render_template
 import os
-from recursive.recursive_indexer import get_projects_for_display, index_images
+from recursive.recursive_indexer import get_projects_for_display
+from livereload import Server
 
 def create_app(test_config=None):
     # create and configure the app
@@ -46,3 +46,8 @@ def create_app(test_config=None):
         return render_template('test.html')
 
     return app
+
+if __name__ == '__main__':
+    app = create_app()
+    server = Server(app.wsgi_app)
+    server.serve(host='0.0.0.0')

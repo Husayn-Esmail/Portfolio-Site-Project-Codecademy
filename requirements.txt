@@ -11,3 +11,6 @@ python-dotenv
 
 # for converting complex datatypes to json
 jsonpickle
+
+# for auto reloading webpage when making front-end changes
+livereload

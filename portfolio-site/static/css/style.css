@@ -10,6 +10,21 @@ body {
     background-color: green;
 }
 
+#primary > ul {
+    display: inline-flex;
+    width: 100vw;
+    list-style: none;
+    padding: 0.5rem 0;
+}
+
+#primary > ul > li {
+    padding: 0 1rem;
+}
+
+#primary > ul > li > a {
+    text-decoration: none;
+    color: orange;
+}
 
 .hero-img {
     display: flex;
