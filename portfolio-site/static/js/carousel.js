@@ -37,11 +37,6 @@ to go forwards or backwards. upon knowing that the head or tail is
 null, the backward/forward buttons (respectively) should disappear.
 */
 
-// let y = document.createElement('p');
-// y.innerHTML = images;
-// document.body.appendChild(y);
-
-
 class Project {
     constructor(name, images) {
         this.__name = name;
@@ -259,17 +254,23 @@ const main_div = document.createElement('div');
 let displayObjects = [];
 const basePath = "static/img/"
 for (let i = 0; i < technologies.length; i++) {
+    // create container for each technology
     const subdiv = document.createElement('div');
     subdiv.className = 'tech-container';
+    // get path to images
     const path_to_images = basePath + technologies[i].prog_language;
+    // display the technology
     const displayTech = new DisplayTechnology(technologies[i], path_to_images);
     displayTech.displayHeading(subdiv);
     const projects = technologies[i].projects;
     displayTech.displayProjects(projects, subdiv);
     displayTech.displayNavButtons(subdiv);
+    // add technology div to encapsulating container
     main_div.appendChild(subdiv);
+    // store new objects
+    displayObjects.push(displayTech);
 }
-
+// add container of technologies to the projects section.
 document.getElementById('projects').appendChild(main_div);
 
 // export { Project, Technology };
