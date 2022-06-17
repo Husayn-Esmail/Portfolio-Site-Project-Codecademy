@@ -259,15 +259,17 @@ const main_div = document.createElement('div');
 let displayObjects = [];
 const basePath = "static/img/"
 for (let i = 0; i < technologies.length; i++) {
+    const subdiv = document.createElement('div');
+    subdiv.className = 'tech-container';
     const path_to_images = basePath + technologies[i].prog_language;
     const displayTech = new DisplayTechnology(technologies[i], path_to_images);
-    displayTech.displayHeading(main_div);
+    displayTech.displayHeading(subdiv);
     const projects = technologies[i].projects;
-    displayTech.displayProjects(projects, main_div);
-    displayTech.displayNavButtons(main_div);
-
+    displayTech.displayProjects(projects, subdiv);
+    displayTech.displayNavButtons(subdiv);
+    main_div.appendChild(subdiv);
 }
 
-document.body.appendChild(main_div);
+document.getElementById('projects').appendChild(main_div);
 
 // export { Project, Technology };

@@ -27,7 +27,8 @@ def create_app(test_config=None):
     def index():
         image_path = "portfolio-site/static/img"
         desc_path = "portfolio-site/static/descriptions"
-        projects = get_projects_for_display(image_path, desc_path)
+        ignored = ['favicons', 'hero']
+        projects = get_projects_for_display(image_path, desc_path, ignored)
         # the projects out of read_images are not json serializable, must be
         # converted first.
         json_projects = []

@@ -178,6 +178,7 @@ class sllnode:
 # @profile
 def index_images(projects: list, 
                 path: str,
+                ignored: list,
                 prev_path: str = None, 
                 prev_item: sllnode = None):
     """
@@ -191,21 +192,23 @@ def index_images(projects: list,
     if is_dir:
         dir_contents = os.listdir(path)
         for file_name in dir_contents:
-            if file_name == "favicons": continue # excludes favicons
+            if file_name in ignored: continue # excludes favicons
             new_lang = ProjectsTechnology(file_name)
             new_path = path + '/' + file_name
             if prev_item is None:
                 new_item = sllnode(file_name)
                 projects.append(new_lang)
                 index_images(projects, 
-                            new_path, 
+                            new_path,
+                            ignored, 
                             prev_path=path, 
                             prev_item=new_item)
             else:
                 new_item = sllnode(file_name)
                 new_item.set_prev(prev_item)
                 index_images(projects, 
-                new_path, 
+                new_path,
+                ignored,
                 prev_path=path, 
                 prev_item=new_item)
     else:
@@ -245,14 +248,14 @@ def get_descriptions(path: str, projects: list):
             print(exc)
 
 
-def get_projects_for_display(image_path: str, desc_path: str):
+def get_projects_for_display(image_path: str, desc_path: str, ignored: list):
     '''
     requires path to images and path to descriptions.
     calls helper functions to fully build out each ProjectsTechnology object
     and returns a list of completely populated objects.
     '''
     technologies = []
-    index_images(technologies, image_path)
+    index_images(technologies, image_path, ignored)
     for tech in technologies:
         tech_projects = tech.get_projects()
         get_descriptions(desc_path, tech_projects)
@@ -263,7 +266,7 @@ def get_projects_for_display(image_path: str, desc_path: str):
 if __name__ == "__main__":
     path = 'portfolio-site/static/img'
     path_for_desc = 'portfolio-site/static/descriptions'
-    new_list = get_projects_for_display(path, path_for_desc)
+    new_list = get_projects_for_display(path, path_for_desc, [])
     for ls in new_list:
         print(ls.get_projects()[0].get_description())
     # x = projects[0].get_projects()[0].to_json()
