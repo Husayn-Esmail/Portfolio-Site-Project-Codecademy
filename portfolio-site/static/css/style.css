@@ -8,9 +8,23 @@
     font-size: 16px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #13216D;
 }
+
+/* primary navigation */
+
+header {
+    position: sticky;
+    -webkit-position: -webkit-sticky;
+    top: 0;
+    z-index:100;
+}
+
 #primary {
     display: flex;
     width:100vw;
@@ -37,9 +51,38 @@ body {
     color: white;
 }
 
-.hero-img {
+
+/* landing */
+#Home {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hero-head {
+    position: absolute;
+    text-align: center;
+    font-size: 4rem;
+    color: white;
+    z-index: 1;
+    background-color: #717171be;
+    padding: 2rem;
+    font-family: 'Quicksand', 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#Home .img-container {
+    display: flex;
+    position: relative;
+    max-height: 35vw;
+    overflow: hidden;
+    align-items: center;
+}
+
+.hero-img {
+    position: relative;
     width: 100vw;
+    overflow: hidden;
 }
 
 .nav-button {
