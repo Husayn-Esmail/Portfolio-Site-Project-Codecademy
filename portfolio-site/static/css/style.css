@@ -10,6 +10,12 @@ body {
     background-color: green;
 }
 
+
+.hero-img {
+    display: flex;
+    width: 100vw;
+}
+
 .nav-button {
     display: inline-block;
     font-size: 5rem;
