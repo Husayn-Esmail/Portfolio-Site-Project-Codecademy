@@ -112,6 +112,8 @@ header {
 }
 
 #secondary {
+    top:5rem;
+    position: sticky;
     display: flex;
     justify-content: center;
 }
@@ -166,7 +168,9 @@ header {
 }
 
 .tech-container > .images {
-    height: 35vh;
+    max-width: 75vw;
+    min-height: 45vw;
+    max-height: 45vw;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     overflow: hidden;
