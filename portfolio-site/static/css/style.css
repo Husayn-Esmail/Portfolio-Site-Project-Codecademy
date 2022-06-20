@@ -95,9 +95,73 @@ header {
     cursor: pointer;
 }
 
+/* carousel styles start */
+
+.block {
+    margin-top: 5rem;
+    display: inline-flex;
+    width: 100vh;
+}
+
+/* Secondary nav styles */
+
+#secondary-section {
+    justify-self: start;
+    width: 25vw;
+}
+
+#secondary {
+    display: flex;
+    justify-content: center;
+    /* width: 100% */
+}
+
+#secondary > ul {
+    list-style: none;
+}
+
+#secondary > ul > li  {
+    text-align: center;
+}
+
+#secondary > ul > li > a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    width: 75vw;
+}
+
+#web, #python, #c, #swift {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Quicksand', 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.subheading, .project-subheading {
+    color: white;
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Quicksand', 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.tech-container {
+    color: white;
+}
+
+.images {
+    display:flex;
+}
+
 .project-image {
     display: inline-flex;
-    width: 100%;
-    height: auto;
+    position: absolute;
+    width: auto;
+    height: 100%;
     flex-wrap:wrap;
 }

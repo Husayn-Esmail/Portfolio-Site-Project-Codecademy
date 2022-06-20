@@ -249,6 +249,7 @@ let technologies = pyObjectToJsObject(parsed_objects)
 
 // div encapsulating the carousel
 const main_div = document.createElement('div');
+main_div.className = "carousel";
 
 //  iterate through technologies to generate the html
 let displayObjects = [];
