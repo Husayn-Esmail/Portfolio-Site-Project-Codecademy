@@ -10,6 +10,8 @@
 
 html {
     scroll-behavior: smooth;
+    color: white;
+    /* width: 100vw; */
 }
 
 body {
@@ -27,7 +29,7 @@ header {
 
 #primary {
     display: flex;
-    width:100vw;
+    /* width:100vw; */
     background-color:#717171;
     justify-content: end;
     padding: 1rem 0;
@@ -64,7 +66,6 @@ header {
     position: absolute;
     text-align: center;
     font-size: 4rem;
-    color: white;
     z-index: 1;
     background-color: #717171be;
     padding: 2rem;
@@ -81,7 +82,7 @@ header {
 
 .hero-img {
     position: relative;
-    width: 100vw;
+    /* width: 100vw; */
     overflow: hidden;
 }
 
@@ -100,20 +101,19 @@ header {
 .block {
     margin-top: 5rem;
     display: inline-flex;
-    width: 100vh;
+    /* width: 100vw; */
 }
 
 /* Secondary nav styles */
 
 #secondary-section {
     justify-self: start;
-    width: 25vw;
+    width: 25%;
 }
 
 #secondary {
     display: flex;
     justify-content: center;
-    /* width: 100% */
 }
 
 #secondary > ul {
@@ -130,10 +130,15 @@ header {
     font-size: 1.2rem;
 }
 
+#projects {
+    width: 75%;
+}
+
 .carousel {
     display: flex;
     justify-content: center;
-    width: 75vw;
+    width: 100%;
+    flex-wrap:wrap;
 }
 
 #web, #python, #c, #swift {
@@ -143,7 +148,6 @@ header {
 }
 
 .subheading, .project-subheading {
-    color: white;
     margin-top: 4rem;
     text-align: center;
     font-size: 1.5rem;
@@ -151,17 +155,9 @@ header {
 }
 
 .tech-container {
-    color: white;
-}
-
-.images {
-    display:flex;
+    width: 100%;
 }
 
 .project-image {
-    display: inline-flex;
-    position: absolute;
-    width: auto;
-    height: 100%;
-    flex-wrap:wrap;
+    width: 100%;
 }
