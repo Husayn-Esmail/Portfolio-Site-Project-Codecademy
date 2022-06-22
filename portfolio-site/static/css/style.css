@@ -162,7 +162,6 @@ header {
 .tech-container > .images {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     background-color: black;
     max-width: 75vw;
     min-height: 45vw;
@@ -175,8 +174,9 @@ header {
 .project-image {
     position: relative;
     height: auto;
-    width: auto;
+    width: 100%;
     max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
 }
 

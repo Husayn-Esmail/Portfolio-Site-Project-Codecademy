@@ -37,7 +37,7 @@ to go forwards or backwards. upon knowing that the head or tail is
 null, the backward/forward buttons (respectively) should disappear.
 */
 
-export class Project {
+class Project {
     constructor(name, images) {
         this.__name = name;
         this.__images = images;
@@ -69,7 +69,7 @@ export class Project {
     }
 }
 
-export class Technology {
+class Technology {
     constructor(prog_language) {
         this.__prog_language = prog_language;
         this.__projects = [];
