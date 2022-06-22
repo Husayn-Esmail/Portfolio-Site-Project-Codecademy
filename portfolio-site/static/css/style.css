@@ -158,19 +158,26 @@ header {
     overflow: hidden;
 }
 
-.project-image {
-    height: 100%;
-}
 
 .tech-container > .images {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
     background-color: black;
     max-width: 75vw;
     min-height: 45vw;
     max-height: 45vw;
-    padding-bottom: 2rem;
     margin-bottom: 2rem;
     margin-right: 2rem;
     overflow: hidden;
+}
+
+.project-image {
+    position: relative;
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .project-subheading {
