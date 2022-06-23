@@ -132,7 +132,7 @@ header {
     width: 75%;
 }
 
-.carousel {
+.technologies-container {
     display: flex;
     justify-content: center;
     width: 100%;

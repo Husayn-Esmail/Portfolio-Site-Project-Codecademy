@@ -44,13 +44,11 @@ class Project {
     getImagePaths() {
         let paths = [];
         for (let image in this.images) {
-            const img_path = `${this.path}/${this.name}`;
+            const img_path = `${this.path}/${this.image}`;
             paths.push(img_path);
         }
         return paths;
     }
-
-    // TODO: Set the path later on in the functions
     // TODO: refactor functions to use the new Project Object
 }
 
@@ -136,9 +134,8 @@ class NavButtons {
 
 
 class DisplayTechnology {
-    constructor(technologyObject, pathToImages) {        
+    constructor(technologyObject) {        
         this._technology = technologyObject;
-        this.path = pathToImages;
         this._projects = technologyObject.projects;
         this.images = [];
     }
@@ -151,11 +148,7 @@ class DisplayTechnology {
         return this._projects;
     }
 
-    set technology(new_technology) {
-        this._technology = new_technology;
-    }
-
-    displayHeading(div) {
+    createHeading() {
         /**
          * accepts a div as an argument.
          * appends a heading (based on the programming language specified in
@@ -163,11 +156,9 @@ class DisplayTechnology {
          */
         let newHeading = document.createElement('h2');
         newHeading.innerHTML = this._technology.prog_language;
-        // need to set css classes or ids
         newHeading.id = this._technology.prog_language;
         // add newHeading to div
-        div.appendChild(newHeading);
-        return null
+        return newHeading
     }
 
     createSubheadingElement(project) {
@@ -190,13 +181,12 @@ class DisplayTechnology {
          */
         let subdiv = document.createElement('div');
         subdiv.className = 'images';
-        const images = project.images;
-        const project_name = project.name;
+        const images_paths = project.getImagePaths;
+        // const project_name = project.name;
         // iterate through images and create img elements
-        for (let i = 0; i < images.length; i++) {
+        for (let img in images_paths) {
             const new_img = document.createElement('img');
-            const image_path = `${this.path}/${project_name}/${images[i]}`;
-            new_img.src = image_path;
+            new_img.src = img;
             new_img.classList.add('project-image');
             new_img.classList.add("hide");
             subdiv.appendChild(new_img);
@@ -214,17 +204,6 @@ class DisplayTechnology {
         return subdiv;
     }
 
-    populateNavButton(button, content) {
-        // sets the button symbol, a class and a click event.
-        button.innerHTML = content;
-        button.className = "nav-button";
-        // click event needs to change.
-        button.addEventListener('click', (event) => {
-            // pass
-        });
-        return null;
-    }
-
     displayNavButtons(div) {
         let left = document.createElement('p');
         let right = document.createElement('p');
@@ -234,28 +213,54 @@ class DisplayTechnology {
         div.appendChild(right);
     }
 
+    createNavButtons(images_div) {
+        let nav = new NavButtons(images_div);
+        let left = nav.left;
+        let right = nav.right;
+        nav.setSymbols;
+        nav.setClasses;
+        nav.addFunctionality;
+        let div = document.createElement('div');
+        div.className = 'nav-buttons-container';
+        div.appendChild(left);
+        div.appendChild(right);
+        return div;
+    }
+
     // create a function that processes the projects in this technology.
     // Call helper functions to display/get the resources to display such
     // elements.
-    displayProjects(projects, div) {
+    displayProjects(div) {
+        const projects = this.projects
         for (let i = 0; i < projects.length; i++) {
             const project = projects[i];
             const subheading = this.createSubheadingElement(project);
             const nav_img_div = document.createElement("div");
-            const img_elements = this.createImageElements(project);
+            const img_elements = this.createImageElements(project); // BUG: Doesn't return a list of image elements
+            document.body.appendChild(img_elements);
             const proj_name = project.name;
             const newObj = {[proj_name]: img_elements};
             this.images.push(newObj);
             // removes hide class because all images hidden upon instantiation
-            img_elements.firstChild.classList.remove("hide");
+            // img_elements.firstChild.classList.remove("hide"); // FIXME: doesn't have first child
             nav_img_div.appendChild(img_elements);    
-            this.displayNavButtons(nav_img_div);
+            // this.displayNavButtons(nav_img_div);
+            const nav = this.createNavButtons(img_elements);
+            nav_img_div.appendChild(nav);
             nav_img_div.className = "nav-img-div"
             const description = this.createDescriptionElement(project);
             div.appendChild(subheading);
             div.appendChild(nav_img_div);
             div.appendChild(description);
         }
+    }
+
+    displayTechnology(main_div) {
+        const div = document.createElement('div');
+        div.className = 'tech-container';
+        const heading = this.createHeading;
+        this.displayProjects(div);
+        main_div.appendChild(div);
     }
 
 }
@@ -303,27 +308,36 @@ let technologies = pyObjectToJsObject(parsed_objects, base_path)
 
 // div encapsulating the carousel
 const main_div = document.createElement('div');
-main_div.className = "carousel";
+main_div.className = "technologies-container";
 
 //  iterate through technologies to generate the html
 let displayObjects = [];
-const basePath = "static/img/"
+// const basePath = "static/img/"
+// for (let i = 0; i < technologies.length; i++) {
+//     // create container for each technology
+//     const subdiv = document.createElement('div');
+//     subdiv.className = 'tech-container';
+//     // get path to images
+//     const path_to_images = basePath + technologies[i].prog_language;
+//     // display the technology
+//     const displayTech = new DisplayTechnology(technologies[i], path_to_images);
+//     displayTech.displayHeading(subdiv);
+//     const projects = technologies[i].projects;
+//     displayTech.displayProjects(projects, subdiv);
+//     // add technology div to encapsulating container
+//     main_div.appendChild(subdiv);
+//     // store new objects
+//     displayObjects.push(displayTech);
+// }
+
+
+
 for (let i = 0; i < technologies.length; i++) {
-    // create container for each technology
-    const subdiv = document.createElement('div');
-    subdiv.className = 'tech-container';
-    // get path to images
-    const path_to_images = basePath + technologies[i].prog_language;
-    // display the technology
-    const displayTech = new DisplayTechnology(technologies[i], path_to_images);
-    displayTech.displayHeading(subdiv);
-    const projects = technologies[i].projects;
-    displayTech.displayProjects(projects, subdiv);
-    // add technology div to encapsulating container
-    main_div.appendChild(subdiv);
-    // store new objects
-    displayObjects.push(displayTech);
+    const dispTech = new DisplayTechnology(technologies[i]);
+    dispTech.displayTechnology(main_div);
+    displayObjects.push(dispTech)
 }
+
 
 for (let object in displayObjects){ 
     console.log(displayObjects[object]);
