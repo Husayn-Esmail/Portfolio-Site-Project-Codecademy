@@ -236,13 +236,13 @@ class DisplayTechnology {
             const project = projects[i];
             const subheading = this.createSubheadingElement(project);
             const nav_img_div = document.createElement("div");
-            const img_elements = this.createImageElements(project); // BUG: Doesn't return a list of image elements
+            const img_elements = this.createImageElements(project);
             document.body.appendChild(img_elements);
             const proj_name = project.name;
             const newObj = {[proj_name]: img_elements};
             this.images.push(newObj);
             // removes hide class because all images hidden upon instantiation
-            img_elements.firstChild.classList.remove("hide"); // FIXME: doesn't have first child
+            img_elements.firstChild.classList.remove("hide");
             nav_img_div.appendChild(img_elements);    
             // this.displayNavButtons(nav_img_div);
             const nav = this.createNavButtons(img_elements);
@@ -312,24 +312,6 @@ main_div.className = "technologies-container";
 
 //  iterate through technologies to generate the html
 let displayObjects = [];
-// const basePath = "static/img/"
-// for (let i = 0; i < technologies.length; i++) {
-//     // create container for each technology
-//     const subdiv = document.createElement('div');
-//     subdiv.className = 'tech-container';
-//     // get path to images
-//     const path_to_images = basePath + technologies[i].prog_language;
-//     // display the technology
-//     const displayTech = new DisplayTechnology(technologies[i], path_to_images);
-//     displayTech.displayHeading(subdiv);
-//     const projects = technologies[i].projects;
-//     displayTech.displayProjects(projects, subdiv);
-//     // add technology div to encapsulating container
-//     main_div.appendChild(subdiv);
-//     // store new objects
-//     displayObjects.push(displayTech);
-// }
-
 
 
 for (let i = 0; i < technologies.length; i++) {
