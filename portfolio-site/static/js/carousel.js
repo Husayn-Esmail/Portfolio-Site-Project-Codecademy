@@ -2,11 +2,11 @@
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
 class Project {
-    constructor(name, images) {
+    constructor(name, images, description, path) {
         this.__name = name;
         this.__images = images;
-        this.__description = "";
-        this.__path = "";
+        this.__description = description;
+        this.__path = path;
     }
 
     get name() {
@@ -217,7 +217,7 @@ function parseItemsInList(listToBeParsed) {
     return parsed_projects;
 }
 
-function pyObjectToJsObject(parsed_projects) {
+function pyObjectToJsObject(parsed_projects, path) {
     let technologies = [];
 
     // convert python objects provided by server into Technology and Project
@@ -228,21 +228,24 @@ function pyObjectToJsObject(parsed_projects) {
         const newTech = new Technology(prog_lang);
         // iterate through projects and create Project objects
         for (let j = 0; j < obj_projects.length; j++) {
+            // set vars to be added to Project object
             const proj_name = obj_projects[j]._Project__name;
             const proj_images = obj_projects[j]._Project__images;
             const proj_desc = obj_projects[j]._Project__description;
-            const proj_obj = new Project(proj_name, proj_images);
-            proj_obj.description = proj_desc;
+            const proj_path = `${path}/${proj_name}`;
+            // create project object
+            const proj_obj = new Project(proj_name, proj_images, proj_desc, proj_path);
+            // add project to the technology
             newTech.add_project(proj_obj);
         }
         technologies.push(newTech);
     }
-    // console.log(technologies);
     return technologies;
 }
 
+const base_path = 'static/img';
 let parsed_objects = parseItemsInList(projects_from_server)
-let technologies = pyObjectToJsObject(parsed_objects)
+let technologies = pyObjectToJsObject(parsed_objects, base_path)
 
 // div encapsulating the carousel
 const main_div = document.createElement('div');
