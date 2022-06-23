@@ -14,8 +14,8 @@ I'm keeping this here for reference though.
 //     const language = nav.children[i].innerText;
 //     let div = document.createElement('div'); // creates a div to contain each image carousel
 //     showcase = new ProjectShowcase(language);
-//     // FIXME: Need to pass image path so we can render images
-//     // FIXME: returns the same list of images every time.
+//     // Need to pass image path so we can render images
+//     // returns the same list of images every time.
 //     for (key in images) {
 //         if (key.toLowerCase === language.toLowerCase) {
 //             showcase.images = images[key];
@@ -101,6 +101,7 @@ class DisplayTechnology {
         this._technology = technologyObject;
         this.path = pathToImages;
         this._projects = technologyObject.projects;
+        this.images = [];
     }
 
     get technology() {
@@ -157,7 +158,8 @@ class DisplayTechnology {
             const new_img = document.createElement('img');
             const image_path = `${this.path}/${project_name}/${images[i]}`;
             new_img.src = image_path;
-            new_img.className = 'project-image';
+            new_img.classList.add('project-image');
+            new_img.classList.add("hide");
             subdiv.appendChild(new_img);
         }
         return subdiv;
@@ -192,6 +194,7 @@ class DisplayTechnology {
         div.appendChild(left);
         div.appendChild(right);
     }
+
     // create a function that processes the projects in this technology.
     // Call helper functions to display/get the resources to display such
     // elements.
@@ -199,10 +202,19 @@ class DisplayTechnology {
         for (let i = 0; i < projects.length; i++) {
             const project = projects[i];
             const subheading = this.createSubheadingElement(project);
-            const images = this.createImageElements(project);
+            const nav_img_div = document.createElement("div");
+            const img_elements = this.createImageElements(project);
+            const proj_name = project.name;
+            const newObj = {[proj_name]: img_elements};
+            this.images.push(newObj);
+            // removes hide class because all images hidden upon instantiation
+            img_elements.firstChild.classList.remove("hide");
+            nav_img_div.appendChild(img_elements);    
+            this.displayNavButtons(nav_img_div);
+            nav_img_div.className = "nav-img-div"
             const description = this.createDescriptionElement(project);
             div.appendChild(subheading);
-            div.appendChild(images);
+            div.appendChild(nav_img_div);
             div.appendChild(description);
         }
     }
@@ -265,13 +277,17 @@ for (let i = 0; i < technologies.length; i++) {
     displayTech.displayHeading(subdiv);
     const projects = technologies[i].projects;
     displayTech.displayProjects(projects, subdiv);
-    displayTech.displayNavButtons(subdiv);
     // add technology div to encapsulating container
     main_div.appendChild(subdiv);
     // store new objects
     displayObjects.push(displayTech);
 }
+
+for (let object in displayObjects){ 
+    console.log(displayObjects[object]);
+}
+
 // add container of technologies to the projects section.
 document.getElementById('projects').appendChild(main_div);
 
-// export { Project, Technology };
+// TODO: figure out how to export my classes...
