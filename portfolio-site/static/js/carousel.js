@@ -82,7 +82,7 @@ class NavButtons {
     constructor(images_div) { 
         this.div = images_div;
         this.start = 0;
-        this.end = this.div.children.length;
+        this.end = this.div.children.length - 1;
         this.left = document.createElement('p');
         this.right = document.createElement('p');
     }
@@ -98,34 +98,36 @@ class NavButtons {
     }
 
     addFunctionality() {
-        let position = start;
+        let position = this.start;
         // hide at start
-        if (position === start) {
+        // hide at end
+        if (position === this.start) {
             this.left.classList.add('hide');
         }
-        // hide at end
-        if (position === end) {
-            this.right.classList.add("hide");
-        }
-
         this.left.addEventListener('click', (event) => {
             this.div.children[position].classList.add('hide');
             position -= 1;
             this.div.children[position].classList.remove('hide');
             // unhide button if moving from end
-            if ((position + 1) === end) {
+            if ((position + 1) === this.end) {
                 this.right.classList.remove('hide');
             }
+            if (position === this.start) {
+                this.left.classList.add('hide');
+            }
         });
-
+        
         this.right.addEventListener('click', (event) => {
             // hide current, unhide next
             this.div.children[position].classList.add('hide');
             position += 1;
             this.div.children[position].classList.remove('hide');
             // unhide button if moving from start
-            if ((position - 1) === start) {
+            if ((position - 1) === this.start) {
                 this.left.classList.remove('hide');
+            }
+            if (position === this.end) {
+                this.right.classList.add("hide");
             }
         });
     }
@@ -215,9 +217,9 @@ class DisplayTechnology {
         let nav = new NavButtons(images_div);
         let left = nav.left;
         let right = nav.right;
-        nav.setSymbols;
-        nav.setClasses;
-        nav.addFunctionality;
+        nav.setSymbols();
+        nav.setClasses();
+        nav.addFunctionality();
         let div = document.createElement('div');
         div.className = 'nav-buttons-container';
         div.appendChild(left);
