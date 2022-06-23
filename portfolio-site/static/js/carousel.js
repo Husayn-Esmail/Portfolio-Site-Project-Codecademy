@@ -42,6 +42,7 @@ class Project {
         this.__name = name;
         this.__images = images;
         this.__description = "";
+        this.__path = "";
     }
 
     get name() {
@@ -67,6 +68,11 @@ class Project {
     set description(newDescription) {
         this.__description = newDescription;
     }
+
+    // TODO: Define setter and getter methods for path
+    // TODO: Define a function that returns a list of paths corresponding to list of images
+    // TODO: Set the path later on in the functions
+    // TODO: refactor functions to use the new Project Object
 }
 
 class Technology {
@@ -181,7 +187,7 @@ class DisplayTechnology {
         button.className = "nav-button";
         // click event needs to change.
         button.addEventListener('click', (event) => {
-            console.log("clicked");
+            // pass
         });
         return null;
     }
