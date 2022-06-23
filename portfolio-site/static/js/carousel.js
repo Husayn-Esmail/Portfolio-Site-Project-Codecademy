@@ -258,7 +258,8 @@ class DisplayTechnology {
     displayTechnology(main_div) {
         const div = document.createElement('div');
         div.className = 'tech-container';
-        const heading = this.createHeading;
+        const heading = this.createHeading();
+        div.appendChild(heading);
         this.displayProjects(div);
         main_div.appendChild(div);
     }
