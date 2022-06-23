@@ -1,42 +1,6 @@
 // debated creating the secondary nav with js as well. 
 // let secondary_nav = ['Python', 'C', 'Swift', 'HTML/CSS'];
 
-
-/*
-This is used for creating the div sections based on secondary navigation.
-We do not necessarily want to do this. It would be more beneificial to 
-create the divs based on the Technology object name.
-I'm keeping this here for reference though.
-*/
-// const nav = document.getElementById('secondary').firstElementChild;
-// for (let i = 0; i < nav.children.length; i++) {
-//     // the elements within secondary navigation
-//     const language = nav.children[i].innerText;
-//     let div = document.createElement('div'); // creates a div to contain each image carousel
-//     showcase = new ProjectShowcase(language);
-//     // Need to pass image path so we can render images
-//     // returns the same list of images every time.
-//     for (key in images) {
-//         if (key.toLowerCase === language.toLowerCase) {
-//             showcase.images = images[key];
-//             break
-//         }
-//     }
-//     showcase.displayHeading(div);
-//     console.log(showcase);
-//     showcase.createNavButtons(div);
-
-//     document.body.appendChild(div); // inserts the div in the body
-// }
-
-/*
-On navigation, depending on what button was clicked, the structure
-of images within the ProjectShowcase objects should also be a
-double linked list so that they know whether there is the ability
-to go forwards or backwards. upon knowing that the head or tail is
-null, the backward/forward buttons (respectively) should disappear.
-*/
-
 class Project {
     constructor(name, images) {
         this.__name = name;
@@ -76,8 +40,16 @@ class Project {
     set path(newPath) {
         this.__path = newPath; 
     }
-    
-    // TODO: Define a function that returns a list of paths corresponding to list of images
+
+    getImagePaths() {
+        let paths = [];
+        for (let image in this.images) {
+            const img_path = `${this.path}/${this.name}`;
+            paths.push(img_path);
+        }
+        return paths;
+    }
+
     // TODO: Set the path later on in the functions
     // TODO: refactor functions to use the new Project Object
 }
