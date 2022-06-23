@@ -81,6 +81,60 @@ class Technology {
     }
 }
 
+class NavButtons {
+    constructor(images_div) { 
+        this.div = images_div;
+        this.start = 0;
+        this.end = this.div.children.length;
+        this.left = document.createElement('p');
+        this.right = document.createElement('p');
+    }
+
+    setSymbols() {
+        this.left.innerText = '<';
+        this.right.innerText = '>';
+    }
+
+    setClasses() {
+        this.left.className = "nav-button";
+        this.right.className = "nav-button";
+    }
+
+    addFunctionality() {
+        let position = start;
+        // hide at start
+        if (position === start) {
+            this.left.classList.add('hide');
+        }
+        // hide at end
+        if (position === end) {
+            this.right.classList.add("hide");
+        }
+
+        this.left.addEventListener('click', (event) => {
+            this.div.children[position].classList.add('hide');
+            position -= 1;
+            this.div.children[position].classList.remove('hide');
+            // unhide button if moving from end
+            if ((position + 1) === end) {
+                this.right.classList.remove('hide');
+            }
+        });
+
+        this.right.addEventListener('click', (event) => {
+            // hide current, unhide next
+            this.div.children[position].classList.add('hide');
+            position += 1;
+            this.div.children[position].classList.remove('hide');
+            // unhide button if moving from start
+            if ((position - 1) === start) {
+                this.left.classList.remove('hide');
+            }
+        });
+    }
+}
+
+
 class DisplayTechnology {
     constructor(technologyObject, pathToImages) {        
         this._technology = technologyObject;
@@ -242,7 +296,7 @@ function pyObjectToJsObject(parsed_projects, path) {
     }
     return technologies;
 }
-
+// build and store objects
 const base_path = 'static/img';
 let parsed_objects = parseItemsInList(projects_from_server)
 let technologies = pyObjectToJsObject(parsed_objects, base_path)
