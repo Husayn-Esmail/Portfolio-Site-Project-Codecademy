@@ -322,9 +322,9 @@ for (let i = 0; i < technologies.length; i++) {
 }
 
 
-for (let object in displayObjects){ 
-    console.log(displayObjects[object]);
-}
+// for (let object in displayObjects){ 
+//     console.log(displayObjects[object]);
+// }
 
 // add container of technologies to the projects section.
 document.getElementById('projects').appendChild(main_div);
