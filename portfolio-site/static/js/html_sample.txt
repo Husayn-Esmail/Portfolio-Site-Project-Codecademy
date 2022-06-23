@@ -1,0 +1,29 @@
+What a project instance should look like on the web.
+<div>
+    <h3>subheading</h3>
+    <div>
+        <images/>
+    </div>
+    <div>
+        <button>left</button>
+        <button>right</button>
+    </div>
+</div>
+
+
+Embedded within a technology:
+<div class="tech-container">
+    <h2>technology</h2>
+    <div>
+        <h3>project_name</h3>
+        <div>
+            <images/>
+        </div>
+        <div>
+            <nav_buttons/>
+        </div>
+    </div>
+    <div>
+        <p>description</p>
+    </div>
+</div>

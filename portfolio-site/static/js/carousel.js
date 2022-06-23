@@ -57,6 +57,10 @@ class Project {
         return this.__description;
     }
 
+    get path() {
+        return this.__path;
+    }
+
     set name(newName) {
         this.__name = newName;
     }
@@ -69,7 +73,10 @@ class Project {
         this.__description = newDescription;
     }
 
-    // TODO: Define setter and getter methods for path
+    set path(newPath) {
+        this.__path = newPath; 
+    }
+    
     // TODO: Define a function that returns a list of paths corresponding to list of images
     // TODO: Set the path later on in the functions
     // TODO: refactor functions to use the new Project Object
