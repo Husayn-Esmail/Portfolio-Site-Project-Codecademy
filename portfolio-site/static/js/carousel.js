@@ -43,13 +43,12 @@ class Project {
 
     getImagePaths() {
         let paths = [];
-        for (let image in this.images) {
-            const img_path = `${this.path}/${this.image}`;
+        for (let i = 0; i < this.images.length; i++) {
+            const img_path = `${this.path}/${this.images[i]}`;
             paths.push(img_path);
         }
         return paths;
     }
-    // TODO: refactor functions to use the new Project Object
 }
 
 class Technology {
@@ -181,12 +180,11 @@ class DisplayTechnology {
          */
         let subdiv = document.createElement('div');
         subdiv.className = 'images';
-        const images_paths = project.getImagePaths;
-        // const project_name = project.name;
+        const images_paths = project.getImagePaths();
         // iterate through images and create img elements
-        for (let img in images_paths) {
+        for (let i = 0; i < images_paths.length; i++) {
             const new_img = document.createElement('img');
-            new_img.src = img;
+            new_img.src = images_paths[i];
             new_img.classList.add('project-image');
             new_img.classList.add("hide");
             subdiv.appendChild(new_img);
@@ -242,7 +240,7 @@ class DisplayTechnology {
             const newObj = {[proj_name]: img_elements};
             this.images.push(newObj);
             // removes hide class because all images hidden upon instantiation
-            // img_elements.firstChild.classList.remove("hide"); // FIXME: doesn't have first child
+            img_elements.firstChild.classList.remove("hide"); // FIXME: doesn't have first child
             nav_img_div.appendChild(img_elements);    
             // this.displayNavButtons(nav_img_div);
             const nav = this.createNavButtons(img_elements);
@@ -291,7 +289,7 @@ function pyObjectToJsObject(parsed_projects, path) {
             const proj_name = obj_projects[j]._Project__name;
             const proj_images = obj_projects[j]._Project__images;
             const proj_desc = obj_projects[j]._Project__description;
-            const proj_path = `${path}/${proj_name}`;
+            const proj_path = `${path}/${prog_lang}/${proj_name}`;
             // create project object
             const proj_obj = new Project(proj_name, proj_images, proj_desc, proj_path);
             // add project to the technology
