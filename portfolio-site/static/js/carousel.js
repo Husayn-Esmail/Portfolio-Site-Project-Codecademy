@@ -330,3 +330,4 @@ for (let i = 0; i < technologies.length; i++) {
 document.getElementById('projects').appendChild(main_div);
 
 // TODO: figure out how to export my classes...
+export default { DisplayTechnology, Project, Technology };
