@@ -8,6 +8,17 @@
     font-size: 16px;
 }
 
+/*
+TODO List
+[] Style navigation buttons to be the correct color,
+[] add a hover action to them
+[] create image modal (javascript)
+[] create a footer
+[] fix main navigational links (python)
+[] build out a resume
+*/
+
+
 html {
     scroll-behavior: smooth;
     color: white;
