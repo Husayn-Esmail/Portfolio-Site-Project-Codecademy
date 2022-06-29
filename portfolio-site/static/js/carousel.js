@@ -118,7 +118,7 @@ class NavButtons {
         });
         
         this.right.addEventListener('click', (event) => {
-            // hide current, unhide next
+            // hide current, unhide next for a given div
             this.div.children[position].classList.add('hide');
             position += 1;
             this.div.children[position].classList.remove('hide');
@@ -186,16 +186,26 @@ class DisplayTechnology {
     }
     
     createNavButtons(images_div) {
+        // init and add necessary properties to individual buttons
         let nav = new NavButtons(images_div);
         let left = nav.left;
         let right = nav.right;
         nav.setSymbols();
         nav.setClasses();
         nav.addFunctionality();
+        // create a container for both buttons
         let div = document.createElement('div');
         div.className = 'nav-buttons-container';
-        div.appendChild(left);
-        div.appendChild(right);
+        // create containers for each button
+        const left_div = document.createElement('div');
+        const right_div = document.createElement('div');
+        left_div.className = "left";
+        right_div.className = "right";
+        left_div.appendChild(left);
+        right_div.appendChild(right);
+        // add nav buttons to the div
+        div.appendChild(left_div);
+        div.appendChild(right_div);
         return div;
     }
     
