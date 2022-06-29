@@ -174,6 +174,31 @@ class DisplayTechnology {
         return subheading;
     }
 
+    
+    createDescriptionElement(project) {
+        const subdiv = document.createElement('div');
+        const proj_description = project.description;
+        const new_p = document.createElement('p');
+        new_p.className = 'project-description';
+        new_p.innerText = proj_description;
+        subdiv.appendChild(new_p);
+        return subdiv;
+    }
+    
+    createNavButtons(images_div) {
+        let nav = new NavButtons(images_div);
+        let left = nav.left;
+        let right = nav.right;
+        nav.setSymbols();
+        nav.setClasses();
+        nav.addFunctionality();
+        let div = document.createElement('div');
+        div.className = 'nav-buttons-container';
+        div.appendChild(left);
+        div.appendChild(right);
+        return div;
+    }
+    
     createImageElements(project) {
         /**
          * Iterates through a projects images and creates an element for each
@@ -194,39 +219,6 @@ class DisplayTechnology {
         return subdiv;
     }
 
-    createDescriptionElement(project) {
-        const subdiv = document.createElement('div');
-        const proj_description = project.description;
-        const new_p = document.createElement('p');
-        new_p.className = 'project-description';
-        new_p.innerText = proj_description;
-        subdiv.appendChild(new_p);
-        return subdiv;
-    }
-
-    displayNavButtons(div) {
-        let left = document.createElement('p');
-        let right = document.createElement('p');
-        this.populateNavButton(left, '<', div);
-        this.populateNavButton(right, '>', div);
-        div.appendChild(left);
-        div.appendChild(right);
-    }
-
-    createNavButtons(images_div) {
-        let nav = new NavButtons(images_div);
-        let left = nav.left;
-        let right = nav.right;
-        nav.setSymbols();
-        nav.setClasses();
-        nav.addFunctionality();
-        let div = document.createElement('div');
-        div.className = 'nav-buttons-container';
-        div.appendChild(left);
-        div.appendChild(right);
-        return div;
-    }
-
     // create a function that processes the projects in this technology.
     // Call helper functions to display/get the resources to display such
     // elements.
@@ -237,20 +229,16 @@ class DisplayTechnology {
             const subheading = this.createSubheadingElement(project);
             const nav_img_div = document.createElement("div");
             const img_elements = this.createImageElements(project);
-            document.body.appendChild(img_elements);
+            const nav = this.createNavButtons(img_elements);
+            img_elements.appendChild(nav);
             const proj_name = project.name;
             const newObj = {[proj_name]: img_elements};
             this.images.push(newObj);
             // removes hide class because all images hidden upon instantiation
             img_elements.firstChild.classList.remove("hide");
-            nav_img_div.appendChild(img_elements);    
-            // this.displayNavButtons(nav_img_div);
-            const nav = this.createNavButtons(img_elements);
-            nav_img_div.appendChild(nav);
-            nav_img_div.className = "nav-img-div"
             const description = this.createDescriptionElement(project);
             div.appendChild(subheading);
-            div.appendChild(nav_img_div);
+            div.appendChild(img_elements);
             div.appendChild(description);
         }
     }
