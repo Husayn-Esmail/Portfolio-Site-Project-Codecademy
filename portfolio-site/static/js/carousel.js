@@ -319,13 +319,8 @@ for (let i = 0; i < technologies.length; i++) {
     displayObjects.push(dispTech)
 }
 
-
-// for (let object in displayObjects){ 
-//     console.log(displayObjects[object]);
-// }
-
 // add container of technologies to the projects section.
 document.getElementById('projects').appendChild(main_div);
 
 // TODO: figure out how to export my classes...
-export default { DisplayTechnology, Project, Technology };
+export default { DisplayTechnology, Project, Technology, NavButtons };

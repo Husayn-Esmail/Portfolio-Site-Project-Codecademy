@@ -1,5 +1,6 @@
 /* Reset CSS */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
 * {
     box-sizing: border-box;
@@ -195,11 +196,13 @@ header {
 
 .nav-button {
     font-size: 5rem;
-    color: brown;
+    color: #808080;
     margin: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .nav-button:hover {
+    color: #d3d3d3;
     cursor: pointer;
 }
 
