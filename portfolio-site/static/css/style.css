@@ -23,6 +23,7 @@ TODO List
 html {
     scroll-behavior: smooth;
     color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
@@ -216,4 +217,22 @@ header {
 
 .hide {
     display: none;
+}
+
+/* footer */
+.footer {
+    background-color: #717171;
+    padding: .5rem;
+}
+
+.foot-content-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.foot-content-container p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
