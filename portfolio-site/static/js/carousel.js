@@ -177,6 +177,7 @@ class DisplayTechnology {
     
     createDescriptionElement(project) {
         const subdiv = document.createElement('div');
+        subdiv.className = "description-container";
         const proj_description = project.description;
         const new_p = document.createElement('p');
         new_p.className = 'project-description';

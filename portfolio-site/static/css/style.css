@@ -211,8 +211,14 @@ header {
     margin-bottom: 3rem;
 }
 
+.description-container {
+    display: flex;
+    justify-content: center;
+}
+
 .project-description {
-    text-align: center;
+    text-align: start;
+    max-width: 50%;
 }
 
 .hide {
