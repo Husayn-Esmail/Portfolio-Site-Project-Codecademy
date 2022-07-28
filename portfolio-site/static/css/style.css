@@ -14,7 +14,7 @@ TODO List
 [x] Style navigation buttons to be the correct color,
 [x] add a hover action to them
 [] create image modal (javascript)
-[] create a footer
+[x] create a footer
 [] fix main navigational links (python)
 [] build out a resume
 */
@@ -224,6 +224,15 @@ header {
 .hide {
     display: none;
 }
+
+
+/* resume */
+
+.content {
+    height: 90vh;
+}
+
+
 
 /* footer */
 .footer {

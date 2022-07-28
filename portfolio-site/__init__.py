@@ -44,6 +44,10 @@ def create_app(test_config=None):
     @app.route('/test', methods=['GET'])
     def test():
         return render_template('test.html')
+    
+    @app.route('/resume', methods=["GET"])
+    def resume():
+        return render_template("resume.html")
 
     return app
 

@@ -323,5 +323,5 @@ for (let i = 0; i < technologies.length; i++) {
 // add container of technologies to the projects section.
 document.getElementById('projects').appendChild(main_div);
 
-// TODO: figure out how to export my classes...
+
 export default { DisplayTechnology, Project, Technology, NavButtons };
