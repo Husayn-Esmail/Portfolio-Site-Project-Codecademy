@@ -8,5 +8,5 @@ export FLASK_RUN_EXTRA_FILES="./static/css/"
 export FLASK_RUN_HOST=0.0.0.0
 export TEMPLATES_AUTO_RELOAD=True
 echo $FLASK_RUN_EXTRA_FILES
-flask run
+python3 -m flask run
 # python3 portfolio-site/__init__.py
