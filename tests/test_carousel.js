@@ -1,5 +1,5 @@
 const assert = require("assert");
-const { Project, Technology } = require("../portfolio-site/static/js/carousel");
+const { Project, Technology } = require("../portfolio_site/static/js/carousel");
 
 describe("Test Project Class", () => {
     it('gets name', () => {

@@ -264,8 +264,8 @@ def get_projects_for_display(image_path: str, desc_path: str, ignored: list):
 
 
 if __name__ == "__main__":
-    path = 'portfolio-site/static/img'
-    path_for_desc = 'portfolio-site/static/descriptions'
+    path = 'portfolio_site/static/img'
+    path_for_desc = 'portfolio_site/static/descriptions'
     new_list = get_projects_for_display(path, path_for_desc, [])
     for ls in new_list:
         print(ls.get_projects()[0].get_description())
