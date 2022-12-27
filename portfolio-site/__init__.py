@@ -3,11 +3,22 @@ import os
 from recursive.recursive_indexer import get_projects_for_display
 from livereload import Server
 
+def before_request():
+    app.jinja_env.cache = {}
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    # app.before_request(before_request)
+    # app.jinja_env.auto_reload = True
     app.config.from_mapping(
-        SECRET_KEY='dev'
+        SECRET_KEY='dev',
+        FLASK_APP="portfolio-site",
+        FLASK_DEBUG=True,
+        FLASK_ENV="development",
+        TEMPLATES_AUTO_RELOAD=True,
+        FLASK_RUN_HOST="0.0.0.0",
+        FLASK_RUN_PORT=5500
     )
     # not setting up a database
     if test_config is None:
@@ -54,4 +65,5 @@ def create_app(test_config=None):
 if __name__ == '__main__':
     app = create_app()
     server = Server(app.wsgi_app)
+    # server.watch('./templates/*')
     server.serve(host='0.0.0.0')
