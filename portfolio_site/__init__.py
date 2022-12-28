@@ -3,8 +3,13 @@ from .recursive import recursive_indexer
 
 
 def create_app(config_filename):
+    """
+    store config files in instance folder (note that this is to be ignored by
+    version control so make sure that instance is in your gitignore)
+    """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_pyfile(config_filename)
+
     @app.route('/', methods=['GET'])
     def index():
         image_path = "portfolio_site/static/img"
@@ -30,6 +35,7 @@ def create_app(config_filename):
     @app.route('/resume', methods=["GET"])
     def resume():
         return render_template("resume.html")
+    
 
     return app
 
