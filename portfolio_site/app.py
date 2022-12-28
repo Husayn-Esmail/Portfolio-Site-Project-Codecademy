@@ -1,22 +1,16 @@
-
-
-def create_app(config_filename):
-    from .routes import app
-    app.config.from_pyfile(config_filename)
-
-    return app
-
-
 # from flask import Flask, render_template
+# from livereload import Server
+# # from .. import dev_config
 # import os
 # # from recursive.recursive_indexer import get_projects_for_display
+# from .recursive import recursive_indexer
 
 # # def create_app(test_config=None):
 # def create_app(config_filename):
 #     # create and configure the app
 #     # app = Flask(__name__, instance_relative_config=True)
 #     app = Flask(__name__, instance_path='/Portolio-Site-Project-Codecademy/instance', instance_relative_config=True)
-#     app.config.from_pyfile(config_filename)
+#     # app.config.from_pyfile(config_filename)
 #     # app.config.from_pyfile(test_config)
 #     # app.config.from_object('default_settings')
 #     # app.config.from_envvar('PORTFOLIO_SETTINGS')
@@ -74,8 +68,15 @@ def create_app(config_filename):
 
 #     return app
 
-# # if __name__ == '__main__':
-# #     app = create_app()
-# #     server = Server(app.wsgi_app)
-# #     # server.watch('./templates/*')
-# #     server.serve(host='0.0.0.0')
+# if __name__ == '__main__':
+#     app = create_app()
+#     server = Server(app.wsgi_app)
+#     # server.watch('./templates/*')
+#     server.serve(host='0.0.0.0')
+
+# if __name__ == '__main__':
+#     app = create_app()
+    # server = Server(app.wsgi_app)
+    # app = create_app()
+    # print("create_app")
+    # server.serve(host='0.0.0.0')
