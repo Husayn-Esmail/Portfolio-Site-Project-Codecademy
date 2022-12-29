@@ -2,13 +2,19 @@ from flask import Flask, render_template
 from .recursive import recursive_indexer
 
 
-def create_app(config_filename):
+def create_app(config_filename=None):
     """
     store config files in instance folder (note that this is to be ignored by
     version control so make sure that instance is in your gitignore)
     """
     app = Flask(__name__, instance_relative_config=True)
-    app.config.from_pyfile(config_filename)
+    if config_filename != None:
+        app.config.from_pyfile(config_filename)
+    else:
+        app.config.from_mapping(
+            RUN_PORT=5500,
+            RUN_HOST="0.0.0.0"
+        )
 
     @app.route('/', methods=['GET'])
     def index():

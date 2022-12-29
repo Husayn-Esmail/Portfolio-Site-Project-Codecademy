@@ -1,4 +1,4 @@
-# for running the webserver
+# for running the development webserver
 flask
 
 # for profiling scripts required by backend code
@@ -14,3 +14,6 @@ jsonpickle
 
 # for auto reloading webpage when making front-end changes
 livereload
+
+# for running production server
+waitress
