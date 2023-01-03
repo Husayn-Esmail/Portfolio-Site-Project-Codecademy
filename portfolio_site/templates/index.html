@@ -3,6 +3,7 @@
 {% block title %}Portfolio{% endblock %}
 {% block head %}
 <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicons/favicon-16x16.png') }}">
+
 {% endblock %}
 {% block content %}
 <section id="Home">
@@ -28,8 +29,12 @@
         <script type="text/javascript">
             var projects_from_server = {{ data|tojson }};
         </script>
-        <script type="module" src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+        
         <!-- all other sections must start after this -->
     </section>
 </div>
+{% endblock %}
+{% block footer %}
+<script type="module" src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+<!-- <script type="module" src="{{ url_for('static', filename='js/footer.js') }}"></script> -->
 {% endblock %}

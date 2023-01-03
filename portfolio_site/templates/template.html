@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        
         {% block head %}{% endblock %}
     </head>
     <body>
@@ -24,11 +25,6 @@
             {% endblock %}
         </div>
     </body>
-    <footer class="footer">
-        <div class="foot-content-container">
-            <p>Copyright 2022</p>
-            <p>Husayn Esmail</p>
-        </div>
-        <!-- footer content will go here -->
-    </footer>
+    {% block footer %}
+    {% endblock %}
 </html>
