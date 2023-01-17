@@ -243,9 +243,11 @@ header {
 .footer {
     background-color: #717171;
     padding: .5rem;
+    width: 100%;
     /* display: flex; */
     /* justify-content: flex-end; */
     position: absolute;
+    bottom: 0;
     /* bottom: calc(-(100vh - 1rem)); */
     /* left: 0; */
     /* right: 0; */
