@@ -313,7 +313,6 @@ main_div.className = "technologies-container";
 //  iterate through technologies to generate the html
 let displayObjects = [];
 
-
 for (let i = 0; i < technologies.length; i++) {
     const dispTech = new DisplayTechnology(technologies[i]);
     dispTech.displayTechnology(main_div);
