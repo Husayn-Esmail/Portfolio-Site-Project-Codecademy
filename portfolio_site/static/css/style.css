@@ -220,11 +220,16 @@ header {
 .description-container {
     display: flex;
     justify-content: center;
+    max-width: 75%;
+    background-color: rgba(145, 145, 145, 0.589);
+    margin: auto;
+    border-radius: 4rem;
 }
 
 .project-description {
     text-align: start;
-    max-width: 50%;
+    font-size: 1.5rem;
+    padding: 2rem;
 }
 
 .hide {
