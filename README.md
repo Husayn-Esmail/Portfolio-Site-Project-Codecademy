@@ -6,4 +6,4 @@ work so far. It's requirements are that it has a homepage that shows projects
 as well as another page with contact information. The website should be
 responsive and have at least one interactive element implemented using
 javascript. I will be using all of those things and will likely be using flask
-or django as a proper web backend. 
+or django as a proper web backend.
