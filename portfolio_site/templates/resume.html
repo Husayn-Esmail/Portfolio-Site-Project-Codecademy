@@ -2,13 +2,14 @@
 {% block title %}Resume{% endblock %}
 {% block head %}
 <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicons/favicon-16x16.png') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/resume.css') }}">
 {% endblock %}
 {% block content %}
 <div class="content">
-    <section>
+    <section class="title">
         <h1>Husayn Esmail</h1>
     </section>
-    <section>
+    <section id="experience">
         <h2>Experience</h2>
         <div>
             <p>Job title, company name, city, state, start date - end date</p>
@@ -27,24 +28,36 @@
             </ul>
         </div>
     </section>
-    <h2>Education</h2>
-    <ul>
-        <li>University of Alberta</li>
-        <li>High School diploma</li>
-        <li>first aid certification</li>
-    </ul>
-    <h2>Projects</h2>
-    <p>project name</p>
-    <ul>
-        <li>project description</li>
-        <li>technologies used</li>
-        <li>what I learned</li>
-    </ul>
-    <h2>Skills</h2>
-    <ul>
-        <li>Technical: []</li>
-        <li>Soft Skills: []</li>
-        <li>Certifications : []</li>
-    </ul>
+    <section id="education">
+        <h2>Education</h2>
+        <div>
+            <ul>
+                <li>University of Alberta</li>
+                <li>High School diploma</li>
+                <li>first aid certification</li>
+            </ul>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div>
+            <p>project name</p>
+            <ul>
+                <li>project description</li>
+                <li>technologies used</li>
+                <li>what I learned</li>
+            </ul>
+        </div>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div>
+            <ul>
+                <li>Technical: []</li>
+                <li>Soft Skills: []</li>
+                <li>Certifications : []</li>
+            </ul>
+        </div>
+    </section>
 </div>
 {% endblock %}

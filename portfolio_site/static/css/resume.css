@@ -1,0 +1,40 @@
+/* Desktop styles */
+:root {
+    font-size: 1em;
+}
+
+.content {
+    font-family: Garamond, Georgia, 'Times New Roman', Times, serif;
+}
+
+section {
+    margin-left: 5rem;
+    padding: 1rem;
+}
+
+.title {
+    margin-top: 3rem;
+}
+
+.title h1 {
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+section h2 {
+    font-size: 2.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+section div {
+    margin-left: 2rem;
+}
+
+section div p {
+    font-weight: 600;
+}
+
+section div ul {
+    padding: 1rem 0.5rem;
+}
