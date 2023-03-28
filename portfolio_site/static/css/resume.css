@@ -35,6 +35,7 @@ section div p {
     font-weight: 600;
 }
 
+/* need to figure out the padding for this section */
 section div ul {
     padding: 1rem 0.5rem;
 }
