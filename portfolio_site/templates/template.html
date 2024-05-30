@@ -13,10 +13,12 @@
             <header>
                 <nav id="primary">
                     <ul>
-                        <li><a href="{{ url_for('index', _anchor='#portfolio') }}">Home</a></li>
-                        <li><a href="">Projects</a></li>
                         <li><a href="{{ url_for('resume') }}">Resume</a></li>
-                        <li><a href="">Contact</a></li>
+			<li><a href="{{ url_for('index') }}">Projects</a></li>
+			<!--
+			<li><a href="{{ url_for('resume') }}">Resume</a></li>
+			<li><a href="">Contact</a></li>
+			-->
                     </ul>
                 </nav>
             </header>
