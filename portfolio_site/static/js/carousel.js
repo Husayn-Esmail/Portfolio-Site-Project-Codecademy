@@ -322,5 +322,35 @@ for (let i = 0; i < technologies.length; i++) {
 // add container of technologies to the projects section.
 document.getElementById('projects').appendChild(main_div);
 
+// this is realllyy stupid code.
+
+// chat gpt function
+function formatString(input) {
+    // Split the input string by "-"
+    const words = input.split('-');
+
+    // Map over each word and capitalize the first letter
+    const formattedWords = words.map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+
+    // Join the words with a space
+    const formattedString = formattedWords.join(' ');
+
+    return formattedString;
+}
+
+
+document.getElementById("python").innerText = "Python";
+document.getElementById("web").innerText = "Web"
+document.getElementById("photography").innerText = "Photography";
+var subheadings = document.getElementsByClassName("project-subheading");
+for (var subheading in subheadings) {
+	console.log(subheadings[subheading].innerText);
+	subheadings[subheading].innerText = formatString(subheadings[subheading].innerText);
+}
+console.log(subheadings);
+
+document.getElementById("swift").innerText = "Swift";
 
 export default { DisplayTechnology, Project, Technology, NavButtons };
