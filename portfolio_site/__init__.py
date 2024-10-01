@@ -30,6 +30,10 @@ def create_app(config_filename=None):
     @app.route('/resume', methods=["GET"])
     def resume():
         return render_template("resume.html")
+
+    @app.route('/portfolio-details.html', methods=["GET"])
+    def portfolio():
+        return render_template("portfolio-details.html", methods=["GET"])
     
 
     return app
