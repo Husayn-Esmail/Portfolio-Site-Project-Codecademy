@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from .recursive import recursive_indexer
 
 
 def create_app(config_filename=None):
@@ -18,17 +17,7 @@ def create_app(config_filename=None):
 
     @app.route('/', methods=['GET'])
     def index():
-        image_path = "portfolio_site/static/img"
-        desc_path = "portfolio_site/static/descriptions"
-        ignored = ['favicons', 'hero', '.DS_Store']
-        projects = recursive_indexer.get_projects_for_display(image_path, desc_path, ignored)
-        # the projects out of read_images are not json serializable, must be
-        # converted first.
-        json_projects = []
-        for project in projects:
-            json_projects.append(project.to_json())
-        data = json_projects
-        return render_template('index.html', data=data)
+        return render_template('iPortfolio/index.html')
 
     @app.route('/contact', methods=['GET', 'POST'])
     def contact():
@@ -41,6 +30,10 @@ def create_app(config_filename=None):
     @app.route('/resume', methods=["GET"])
     def resume():
         return render_template("resume.html")
+
+    @app.route('/portfolio-details.html', methods=["GET"])
+    def portfolio():
+        return render_template("portfolio-details.html", methods=["GET"])
     
 
     return app
