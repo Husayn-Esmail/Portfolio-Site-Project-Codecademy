@@ -1,0 +1,1 @@
+This is a commandline application I wrote in C to help me calculate final grades. There are tons of these on the internet and many are better than mine but I wanted to use this project to get more comfortable in C. I did learn a lot but I'm not convinced that this is very secure, it's here to show I tried.

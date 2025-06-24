@@ -1,0 +1,63 @@
+{% extends "template.html" %}
+{% block title %}Resume{% endblock %}
+{% block head %}
+<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicons/favicon-16x16.png') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/resume.css') }}">
+{% endblock %}
+{% block content %}
+<div class="content">
+    <section class="title">
+        <h1>Husayn Esmail</h1>
+    </section>
+    <section id="experience">
+        <h2>Experience</h2>
+        <div>
+            <p>Job title, company name, city, state, start date - end date</p>
+            <ul>
+                <li>I implemented high quality user interface designs using CSS and Javascript</li>
+                <li>I assisted with eliminating pain points in the user experience</li>
+                <li>I helped configure Moodle developer and production environments</li>
+            </ul>
+        </div>
+        <div>
+            <p>Graphic Designer, Ismaili Council for Edmonton, January 2022-Present</p>
+            <ul>
+                <li>Designed enticing graphics for social media on a weekly basis</li>
+                <li>Created coherent designs that respect design guidelines</li>
+                <li>Built a brand through recognizable and distinct designs</li>
+            </ul>
+        </div>
+    </section>
+    <section id="education">
+        <h2>Education</h2>
+        <div>
+            <ul>
+                <li>University of Alberta</li>
+                <li>High School diploma</li>
+                <li>first aid certification</li>
+            </ul>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div>
+            <p>project name</p>
+            <ul>
+                <li>project description</li>
+                <li>technologies used</li>
+                <li>what I learned</li>
+            </ul>
+        </div>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div>
+            <ul>
+                <li>Technical: []</li>
+                <li>Soft Skills: []</li>
+                <li>Certifications : []</li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

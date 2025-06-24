@@ -1,0 +1,1 @@
+This was a codecademy project that aimed to teach me how to create layouts on the web using flex box. The experience was very valuable for learning how to use vanilla CSS to manipulate the positions of elements the web. I used a friend's company as sample data and my own photography to complement the example content with the exception of one image.

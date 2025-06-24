@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Default{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div id="main">
+            <header>
+                <nav id="primary">
+                    <ul>
+                        <li><a href="{{ url_for('resume') }}">Resume</a></li>
+			<li><a href="{{ url_for('index') }}">Projects</a></li>
+			<!--
+			<li><a href="{{ url_for('resume') }}">Resume</a></li>
+			<li><a href="">Contact</a></li>
+			-->
+                    </ul>
+                </nav>
+            </header>
+            <div class="content">
+                <!-- rest of content of other pages will go below this navigation -->
+                {% block content %}
+                {% endblock %}
+            </div>
+            <!-- <div id="footer_container"> -->
+                <!-- <footer id="footer"> -->
+                    <!-- <div class="foot-content-container"> -->
+                        <!-- <p>2022</p> -->
+                        <!-- <p>Husayn Esmail</p> -->
+                        {% block footer %}
+                        {% endblock %}
+                    <!-- </div> -->
+                <!-- </footer> -->
+            <!-- </div> -->
+        <!-- </div> -->
+    </body>
+</html>

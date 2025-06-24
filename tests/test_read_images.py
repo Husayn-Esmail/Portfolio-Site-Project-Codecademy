@@ -4,7 +4,7 @@ import os
 
 class TestRecursiveIndexer:
     def setup(self):
-        self.path = 'portfolio-site/static/img'
+        self.path = 'portfolio_site/static/img'
         self.projects = []
         recursive_indexer.index_images(self.projects, self.path)
     
